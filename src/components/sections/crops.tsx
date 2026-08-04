@@ -16,7 +16,7 @@ const cropPhotos: Partial<Record<CropKey, string[]>> = {
 export function Crops() {
   const { t } = useLanguage();
   const [active, setActive] = useState<CropKey>("maca");
-  const crop = t.crops.items.find((c) => c.key === active) ?? t.crops.items[0];
+  const crop = t.crops.items.find((c) => c.key === active) ?? t.crops.items[0]!;
   const photos = cropPhotos[crop.key] ?? [];
 
   return (
