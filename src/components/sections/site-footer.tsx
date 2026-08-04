@@ -1,7 +1,7 @@
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { Wordmark } from "@/components/brand";
-import logoFerticerto from "@/assets/logo_ferticerto.png";
-import logoSanfer from "@/assets/logo_sanfer.jpg";
+import { logo_ferticerto_png as logoFerticerto } from "@/assets/images";
+import { logo_sanfer_jpg as logoSanfer } from "@/assets/images";
 
 export function SiteFooter() {
   const { t } = useLanguage();

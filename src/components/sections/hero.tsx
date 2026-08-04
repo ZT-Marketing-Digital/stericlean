@@ -1,6 +1,6 @@
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { DropMark } from "@/components/brand";
-import heroImg from "@/assets/aplicacao_campo.jpg";
+import { aplicacao_campo_jpg as heroImg } from "@/assets/images";
 
 export function Hero() {
   const { t } = useLanguage();

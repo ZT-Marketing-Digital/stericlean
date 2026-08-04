@@ -1,7 +1,7 @@
 import { useLanguage } from "@/i18n/LanguageProvider";
-import img2023 from "@/assets/foto_palacio_iguacu_2023.jpg";
-import img2025 from "@/assets/foto_agroleite_castro_2025.jpg";
-import img2026 from "@/assets/foto_inauguracao_biopark_2026.jpg";
+import { foto_palacio_iguacu_2023_jpg as img2023 } from "@/assets/images";
+import { foto_agroleite_castro_2025_jpg as img2025 } from "@/assets/images";
+import { foto_inauguracao_biopark_2026_jpg as img2026 } from "@/assets/images";
 
 const photos = [img2023, img2025, img2026];
 
