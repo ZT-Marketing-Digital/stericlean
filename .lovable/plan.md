@@ -37,5 +37,17 @@ Técnico-científico e direto. Frases de impacto curtas ao lado dos dados ("não
 
 ## Pendências antes de construir
 - Conteúdo das seções **Produto** e **Notícias** (do site da Ferticerto).
-- Fotos: eventos (Palácio Iguaçu 2023, Agroleite 2025, Biopark 2026), lavouras/frutos por cultura, imagem do hero.
+- Fotos das culturas restantes (maçã, tomate, uva, morango, citros, manga, trigo) e imagem de hero.
 - Telefones e endereços completos.
+
+## Arquivos já recebidos
+Serão publicados via Lovable Assets (CDN) e importados como pointers em `src/assets/`:
+- Logo: `Logo_SteriClean.pdf` (converter para SVG/PNG; o motivo gota + ondas vira elemento gráfico).
+- Timeline institucional: `foto_palacio_iguacu_2023.jpg`, `foto_assinatura_palacio_iguacu.jpg` (2023), `foto_agroleite_castro_2025.jpg` (2025), `foto_inauguracao_biopark_2026.jpg` (2026).
+- Mecanismo de ação: `icone_agua_em_repouso.jpg` (água em repouso) e `icone_molecula_alt.jpg` (molécula ativada H-O-Cl) — serão recriados como SVG limpo na paleta da marca para o bloco "antes / depois da ativação".
+- Cultura cevada: `cevada_mao.jpg` e `cevada_brotos.jpg` (par de fotos do bloco Cevada).
+- Aplicação em campo: `aplicacao_campo.jpg` (uso na seção de mecanismo ou hero secundário).
+- Referência de tom (não embarcar): `Capa_1.jpg`, `O_Fim_da_Resistência_aos_Fungicidas.jpg`, `Resultados_obtidos_com_Uvas.pdf`.
+
+Culturas sem foto ainda receberão um placeholder no padrão visual da marca, substituível quando as imagens chegarem.
+
