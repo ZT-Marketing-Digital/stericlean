@@ -1,5 +1,5 @@
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { DropMark } from "@/components/brand";
+import { DropMark, Wordmark } from "@/components/brand";
 import { aplicacao_campo_jpg as heroImg } from "@/assets/images";
 
 export function Hero() {
