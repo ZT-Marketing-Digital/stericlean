@@ -1,12 +1,26 @@
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { LANGS } from "@/i18n/translations";
+import type { Lang } from "@/i18n/translations";
 import { Wordmark } from "@/components/brand";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const LANG_OPTIONS: { code: Lang; region: string; short: string; name: string }[] = [
+  { code: "pt", region: "br", short: "PT", name: "Português" },
+  { code: "en", region: "us", short: "EN", name: "English" },
+  { code: "es", region: "es", short: "ES", name: "Español" },
+];
 
 export function SiteHeader() {
   const { t, lang, setLang } = useLanguage();
   const [open, setOpen] = useState(false);
+  const current = LANG_OPTIONS.find((l) => l.code === lang) ?? LANG_OPTIONS[0];
+
 
   const links = [
     { href: "#mecanismo", label: t.nav.mechanism },
