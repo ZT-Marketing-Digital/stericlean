@@ -1,12 +1,26 @@
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { LANGS } from "@/i18n/translations";
+import type { Lang } from "@/i18n/translations";
 import { Wordmark } from "@/components/brand";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+const LANG_OPTIONS: { code: Lang; region: string; short: string; name: string }[] = [
+  { code: "pt", region: "br", short: "PT", name: "Português" },
+  { code: "en", region: "us", short: "EN", name: "English" },
+  { code: "es", region: "es", short: "ES", name: "Español" },
+];
 
 export function SiteHeader() {
   const { t, lang, setLang } = useLanguage();
   const [open, setOpen] = useState(false);
+  const current = LANG_OPTIONS.find((l) => l.code === lang) ?? LANG_OPTIONS[0]!;
+
 
   const links = [
     { href: "#mecanismo", label: t.nav.mechanism },
@@ -35,26 +49,32 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div
-            className="flex items-center rounded-full border border-border bg-secondary/60 p-0.5"
-            role="group"
-            aria-label="Language"
-          >
-            {LANGS.map((l) => (
-              <button
-                key={l.code}
-                onClick={() => setLang(l.code)}
-                aria-pressed={lang === l.code}
-                className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-colors ${
-                  lang === l.code
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {l.label}
-              </button>
-            ))}
-          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              <span className="text-[10px] font-bold uppercase text-primary">
+                {current.region}
+              </span>
+              <span>{current.short}</span>
+              <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="min-w-44 p-1.5">
+              {LANG_OPTIONS.map((l) => (
+                <DropdownMenuItem
+                  key={l.code}
+                  onSelect={() => setLang(l.code)}
+                  className={`gap-3 rounded-md px-2.5 py-2 text-sm ${
+                    lang === l.code ? "font-semibold text-primary" : "text-foreground"
+                  }`}
+                >
+                  <span className="w-6 text-[10px] font-bold uppercase text-muted-foreground">
+                    {l.region}
+                  </span>
+                  {l.name}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
 
           <a
             href="#contato"
