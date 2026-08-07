@@ -49,6 +49,8 @@ export type Dict = {
     title: string;
     lead: string;
     punch: string;
+    figureTitle: string;
+    figureCaption: string;
     body: string;
     cards: { title: string; text: string }[];
   };
@@ -124,6 +126,9 @@ const pt: Dict = {
     lead:
       "A molécula ativa do SteriClean é gerada a partir da água e age por contato: oxida a membrana do microrganismo em segundos.",
     punch: "Não envenena o fungo. Rasga a pele do fungo.",
+    figureTitle: "Figura 3 — Colônias de Penicillium recuperadas da lavagem dos frutos",
+    figureCaption:
+      "Placas com colônias de Penicillium (colônias verdes) recuperadas da lavagem dos frutos da testemunha (painel A, à esquerda), e das partes inferior (painel B, ao centro) e superior da câmara fria (painel C, à direita) com tratamento SteriClean.",
     body:
       "Por atuar fisicamente, e não por rota bioquímica, o patógeno não desenvolve resistência ao longo das safras — diferente dos fungicidas convencionais, que perdem eficácia a cada ciclo de uso.",
     cards: [
@@ -346,6 +351,9 @@ const es: Dict = {
     lead:
       "La molécula activa de SteriClean se genera a partir del agua y actúa por contacto: oxida la membrana del microorganismo en segundos.",
     punch: "No envenena al hongo. Rompe la piel del hongo.",
+    figureTitle: "Figura 3 — Colonias de Penicillium recuperadas del lavado de los frutos",
+    figureCaption:
+      "Placas con colonias de Penicillium (colonias verdes) recuperadas del lavado de los frutos del testigo (panel A, a la izquierda), y de las partes inferior (panel B, al centro) y superior de la cámara fría (panel C, a la derecha) con tratamiento SteriClean.",
     body:
       "Al actuar físicamente y no por ruta bioquímica, el patógeno no desarrolla resistencia a lo largo de las zafras, a diferencia de los fungicidas convencionales, que pierden eficacia en cada ciclo.",
     cards: [
@@ -524,6 +532,9 @@ const en: Dict = {
     lead:
       "SteriClean's active molecule is generated from water and acts on contact: it oxidizes the microorganism's membrane in seconds.",
     punch: "It doesn't poison the fungus. It tears the fungus open.",
+    figureTitle: "Figure 3 — Penicillium colonies recovered from fruit washing",
+    figureCaption:
+      "Plates with Penicillium colonies (green colonies) recovered from washing the control fruit (panel A, left), and from the lower (panel B, center) and upper (panel C, right) areas of the cold chamber under SteriClean treatment.",
     body:
       "Because the action is physical rather than biochemical, pathogens don't build resistance season after season — unlike conventional fungicides, which lose efficacy with every cycle of use.",
     cards: [
