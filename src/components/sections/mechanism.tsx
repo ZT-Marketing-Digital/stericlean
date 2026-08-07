@@ -38,14 +38,22 @@ export function Mechanism() {
                 loading="lazy"
               />
             </div>
-            <div className="mt-5 overflow-hidden rounded-2xl border border-border bg-card">
+            <figure className="mt-5 overflow-hidden rounded-2xl border border-border bg-card">
               <img
                 src={placasImg}
-                alt="Placas de Petri comparando testemunha e tratamento com SteriClean contra Penicillium"
-                className="aspect-16/9 w-full object-cover"
+                alt={t.mechanism.figureTitle}
+                className="w-full object-cover"
                 loading="lazy"
               />
-            </div>
+              <figcaption className="border-t border-border p-5">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                  {t.mechanism.figureTitle}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {t.mechanism.figureCaption}
+                </p>
+              </figcaption>
+            </figure>
           </div>
         </div>
 
