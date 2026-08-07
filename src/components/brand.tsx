@@ -1,3 +1,6 @@
+import logoGreen from "@/assets/logo_stericlean.png.asset.json";
+import logoWhite from "@/assets/logo_stericlean_branco.png.asset.json";
+
 export function DropMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" className={className} aria-hidden="true" fill="none">
@@ -16,13 +19,18 @@ export function DropMark({ className }: { className?: string }) {
   );
 }
 
-export function Wordmark({ className }: { className?: string }) {
+export function Wordmark({
+  className,
+  variant = "color",
+}: {
+  className?: string;
+  variant?: "color" | "white";
+}) {
   return (
-    <span className={`inline-flex items-center gap-2 ${className ?? ""}`}>
-      <DropMark className="h-7 w-7 text-accent" />
-      <span className="font-display text-xl font-bold tracking-tight">
-        Steri<span className="text-primary">Clean</span>
-      </span>
-    </span>
+    <img
+      src={variant === "white" ? logoWhite.url : logoGreen.url}
+      alt="SteriClean"
+      className={`h-9 w-auto object-contain md:h-10 ${className ?? ""}`}
+    />
   );
 }
