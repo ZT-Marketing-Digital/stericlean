@@ -12,6 +12,7 @@ import manga_caixa_jpg_json from "./manga_caixa.jpg.asset.json";
 import manga_esteira_jpg_json from "./manga_esteira.jpg.asset.json";
 import morango_bandeja_jpg_json from "./morango_bandeja.jpg.asset.json";
 import placas_penicillium_jpg_json from "./placas_penicillium.jpg.asset.json";
+import placas_penicillium_placas_jpg_json from "./placas_penicillium_placas.jpg.asset.json";
 import produto_embalagem_25L_png_json from "./produto_embalagem_25L.png.asset.json";
 import mapa_brasil_pr_jpg_json from "./mapa_brasil_pr.jpg.asset.json";
 
@@ -29,5 +30,6 @@ export const manga_caixa_jpg = manga_caixa_jpg_json.url;
 export const manga_esteira_jpg = manga_esteira_jpg_json.url;
 export const morango_bandeja_jpg = morango_bandeja_jpg_json.url;
 export const placas_penicillium_jpg = placas_penicillium_jpg_json.url;
+export const placas_penicillium_placas_jpg = placas_penicillium_placas_jpg_json.url;
 export const produto_embalagem_25L_png = produto_embalagem_25L_png_json.url;
 export const mapa_brasil_pr_jpg = mapa_brasil_pr_jpg_json.url;
