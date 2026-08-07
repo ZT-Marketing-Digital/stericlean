@@ -19,7 +19,7 @@ const LANG_OPTIONS: { code: Lang; region: string; short: string; name: string }[
 export function SiteHeader() {
   const { t, lang, setLang } = useLanguage();
   const [open, setOpen] = useState(false);
-  const current = LANG_OPTIONS.find((l) => l.code === lang) ?? LANG_OPTIONS[0];
+  const current = LANG_OPTIONS.find((l) => l.code === lang) ?? LANG_OPTIONS[0]!;
 
 
   const links = [
