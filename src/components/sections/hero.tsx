@@ -17,10 +17,13 @@ export function Hero() {
 
       <div className="section-shell relative py-24 md:py-32">
         <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
+          <Wordmark variant="white" className="h-11 md:h-14" />
+
+          <span className="mt-7 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-accent">
             <DropMark className="h-3.5 w-3.5" />
             {t.hero.eyebrow}
           </span>
+
 
           <h1 className="mt-6 text-4xl font-bold leading-[1.05] text-primary-foreground sm:text-5xl md:text-6xl">
             {t.hero.title}{" "}
