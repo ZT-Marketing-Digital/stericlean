@@ -1,6 +1,6 @@
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { icone_molecula_verde_jpg as moleculaImg } from "@/assets/images";
-import { placas_penicillium_jpg as placasImg } from "@/assets/images";
+import { placas_penicillium_placas_jpg as placasImg } from "@/assets/images";
 
 export function Mechanism() {
   const { t } = useLanguage();
