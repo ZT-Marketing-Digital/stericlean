@@ -1,5 +1,5 @@
-import logoGreen from "@/assets/logo_stericlean.png.asset.json";
-import logoWhite from "@/assets/logo_stericlean_branco.png.asset.json";
+const logoGreen = "/images/logo_stericlean.png";
+const logoWhite = "/images/logo_stericlean_branco.png";
 
 export function DropMark({ className }: { className?: string }) {
   return (
@@ -28,7 +28,7 @@ export function Wordmark({
 }) {
   return (
     <img
-      src={variant === "white" ? logoWhite.url : logoGreen.url}
+      src={variant === "white" ? logoWhite : logoGreen}
       alt="SteriClean"
       className={`h-9 w-auto object-contain md:h-10 ${className ?? ""}`}
     />

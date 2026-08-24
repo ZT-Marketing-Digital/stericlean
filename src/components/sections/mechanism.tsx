@@ -30,14 +30,7 @@ export function Mechanism() {
           </div>
 
           <div className="relative">
-            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--brand-deep)_55%,transparent)]">
-              <img
-                src={moleculaImg}
-                alt="Representação da molécula ativa do SteriClean"
-                className="aspect-4/3 w-full object-cover"
-                loading="lazy"
-              />
-            </div>
+            
             <figure className="mt-5 overflow-hidden rounded-2xl border border-border bg-card">
               <img
                 src={placasImg}
