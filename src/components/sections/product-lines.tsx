@@ -43,6 +43,10 @@ export function ProductLines() {
             );
           })}
         </div>
+
+        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+          {t.lines.disclaimer}
+        </p>
       </div>
     </section>
   );

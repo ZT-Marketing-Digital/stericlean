@@ -42,7 +42,7 @@ export function Hero() {
               {t.hero.ctaPrimary}
             </a>
             <a
-              href="#resultados"
+              href="#culturas"
               className="rounded-full border border-primary-foreground/35 px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
             >
               {t.hero.ctaSecondary}

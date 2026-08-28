@@ -45,6 +45,10 @@ export function Timeline() {
             </li>
           ))}
         </ol>
+
+        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+          {t.timeline.note}
+        </p>
       </div>
     </section>
   );

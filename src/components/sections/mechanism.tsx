@@ -1,6 +1,5 @@
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { icone_molecula_verde_jpg as moleculaImg } from "@/assets/images";
-import { placas_penicillium_placas_jpg as placasImg } from "@/assets/images";
 
 export function Mechanism() {
   const { t } = useLanguage();
@@ -32,12 +31,14 @@ export function Mechanism() {
           <div className="relative">
             
             <figure className="mt-5 overflow-hidden rounded-2xl border border-border bg-card">
-              <img
-                src={placasImg}
-                alt={t.mechanism.figureTitle}
-                className="w-full object-cover"
-                loading="lazy"
-              />
+              <div className="flex aspect-4/3 items-center justify-center bg-white p-10">
+                <img
+                  src={moleculaImg}
+                  alt={t.mechanism.figureTitle}
+                  className="h-full w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
               <figcaption className="border-t border-border p-5">
                 <p className="text-xs font-semibold uppercase tracking-widest text-primary">
                   {t.mechanism.figureTitle}

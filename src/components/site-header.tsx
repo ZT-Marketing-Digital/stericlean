@@ -24,7 +24,7 @@ export function SiteHeader() {
 
   const links = [
     { href: "#mecanismo", label: t.nav.mechanism },
-    { href: "#resultados", label: t.nav.results },
+    { href: "#culturas", label: t.nav.results },
     { href: "#linhas", label: t.nav.lines },
     { href: "#sustentabilidade", label: t.nav.sustainability },
   ];

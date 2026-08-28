@@ -1,5 +1,16 @@
 # SteriClean Solutions
 
+> ⚠️ **AVISO REGULATÓRIO — leia antes de reaproveitar este briefing.**
+> O conteúdo abaixo é o briefing original de marca e **não está adequado** às
+> *Diretrizes Sugeridas de Comunicação e Marketing* (Sanfer, v1). Ele contém
+> alegações que **não podem ser publicadas** enquanto não houver registro/estudo
+> compatível: percentuais de eficácia, "sanitizante"/"desinfetante", "sem
+> resistência microbiana", "produto natural", "substitui fungicida" e menções a
+> órgãos públicos que sugiram aval oficial.
+> O texto publicado no site (`src/i18n/translations.ts`) já foi reescrito conforme
+> as diretrizes. **Não copie frases deste README para o site, cards ou qualquer
+> outro canal** sem passar pelo checklist da seção 5 das diretrizes.
+
 SteriClean — Brief de Marca + Conteúdo + Prompt Lovable
 
 Fontes lidas na pasta do Drive: apresentação institucional (pptx/pdf), planejamento de conteúdo Instagram (xlsx), logo (Identidade Visual), documentos de links/contratos/acessos. Não consegui acessar ferticerto.com (sem permissão de rede para o domínio) — se quiser, me envie prints ou libere o acesso e eu incorporo o padrão visual real do site.

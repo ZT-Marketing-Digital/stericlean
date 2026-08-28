@@ -20,7 +20,7 @@ export function Crops() {
   const photos = cropPhotos[crop.key] ?? [];
 
   return (
-    <section id="resultados" className="bg-brand-soft py-24">
+    <section id="culturas" className="bg-brand-soft py-24">
       <div className="section-shell">
         <div className="max-w-2xl">
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">
@@ -53,16 +53,18 @@ export function Crops() {
 
         <div className="mt-8 grid gap-8 rounded-3xl border border-border bg-card p-6 md:p-10 lg:grid-cols-[1.05fr_1fr]">
           <div>
-            <p className="stat-figure text-6xl text-primary md:text-7xl">{crop.stat}</p>
-            <p className="mt-3 max-w-sm text-sm font-medium uppercase tracking-wide text-muted-foreground">
-              {crop.statLabel}
+            <span className="inline-flex rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
+              {crop.stage}
+            </span>
+            <p className="mt-4 font-display text-4xl font-bold leading-tight text-primary md:text-5xl">
+              {crop.name}
             </p>
 
             <dl className="mt-9 space-y-6">
               {[
-                { label: t.crops.labels.results, value: crop.results },
+                { label: t.crops.labels.application, value: crop.application },
                 { label: t.crops.labels.environment, value: crop.environment },
-                { label: t.crops.labels.conclusion, value: crop.conclusion },
+                { label: t.crops.labels.note, value: crop.note },
               ].map((row) => (
                 <div key={row.label} className="border-l-2 border-accent pl-4">
                   <dt className="text-xs font-semibold uppercase tracking-widest text-primary">

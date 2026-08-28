@@ -19,11 +19,10 @@ export type CropKey =
 export type Crop = {
   key: CropKey;
   name: string;
-  stat: string;
-  statLabel: string;
-  results: string;
+  stage: string;
+  application: string;
   environment: string;
-  conclusion: string;
+  note: string;
 };
 
 export type Dict = {
@@ -59,18 +58,20 @@ export type Dict = {
     title: string;
     lead: string;
     items: { year: string; title: string; text: string }[];
+    note: string;
   };
   crops: {
     eyebrow: string;
     title: string;
     lead: string;
-    labels: { results: string; environment: string; conclusion: string };
+    labels: { application: string; environment: string; note: string };
     items: Crop[];
   };
   lines: {
     eyebrow: string;
     title: string;
     items: { name: string; text: string; bullets: string[] }[];
+    disclaimer: string;
   };
   sustainability: {
     eyebrow: string;
@@ -90,76 +91,78 @@ export type Dict = {
     success: string;
     units: { label: string; value: string }[];
   };
-  footer: { rights: string; partners: string };
+  footer: { rights: string; partners: string; disclaimer: string };
 };
 
 const pt: Dict = {
   meta: {
-    title: "SteriClean — Sanitizante agrícola de tecnologia húngara no Brasil",
+    title: "SteriClean — Adjuvante para uso agrícola produzido por eletrólise",
     description:
-      "SteriClean é um sanitizante e condicionador à base de água que oxida fungos e bactérias sem resíduo químico e sem gerar resistência. Resultados comprovados em maçã, tomate, uva, morango, citros, manga, cevada e trigo.",
+      "SteriClean é um adjuvante para uso agrícola, obtido a partir de água e sal por processo eletroquímico de eletrólise. O credenciamento junto ao MAPA está em andamento.",
   },
   nav: {
-    mechanism: "Como funciona",
-    results: "Resultados",
+    mechanism: "Tecnologia",
+    results: "Culturas",
     lines: "Linhas",
-    sustainability: "Sustentabilidade",
+    sustainability: "Boas práticas",
     contact: "Contato",
   },
   hero: {
     eyebrow: "Tecnologia húngara · Produção no Paraná",
-    title: "O fim da resistência aos fungicidas",
-    highlight: "começa com oxidação direta",
+    title: "Tecnologia de água eletrolisada",
+    highlight: "para o manejo agrícola",
     subtitle:
-      "SteriClean não envenena o fungo — rompe a parede celular por oxidação, como fazem os leucócitos no corpo humano. Sem resíduo, sem carência, sem resistência microbiana.",
+      "SteriClean é um adjuvante para uso agrícola, produzido a partir de água e sal por processo de eletrólise, desenvolvido em parceria com a Ferticerto. O credenciamento junto ao MAPA está em andamento.",
     ctaPrimary: "Falar com especialista",
-    ctaSecondary: "Ver resultados",
+    ctaSecondary: "Ver culturas",
     stats: [
-      { value: "88,7%", label: "redução de esporos em maçã Fuji" },
-      { value: "31 dias", label: "vida de prateleira do morango (era 14)" },
-      { value: "90–100%", label: "redução fúngica em manga · Embrapa" },
+      { value: "Água + sal", label: "insumos do processo eletroquímico" },
+      { value: "Eletrólise", label: "tecnologia de água eletrolisada" },
+      {
+        value: "Uso agrícola",
+        label: "adjuvante — credenciamento junto ao MAPA em andamento",
+      },
     ],
   },
   mechanism: {
-    eyebrow: "Mecanismo de ação",
-    title: "Oxidação direta, não química sistêmica",
+    eyebrow: "A tecnologia",
+    title: "Água eletrolisada, obtida de água e sal",
     lead:
-      "A molécula ativa do SteriClean é gerada a partir da água e age por contato: oxida a membrana do microrganismo em segundos.",
-    punch: "Não envenena o fungo. Rasga a pele do fungo.",
-    figureTitle: "Figura 3 — Colônias de Penicillium recuperadas da lavagem dos frutos",
+      "A solução do SteriClean é produzida por eletrólise: uma corrente elétrica aplicada a uma solução de água e sal transforma esses insumos em um líquido pronto para diluição e uso, sem adição de solventes.",
+    punch: "Água e sal, transformados por corrente elétrica.",
+    figureTitle: "Eletrólise — corrente elétrica aplicada à solução",
     figureCaption:
-      "Placas com colônias de Penicillium (colônias verdes) recuperadas da lavagem dos frutos da testemunha (painel A, à esquerda), e das partes inferior (painel B, ao centro) e superior da câmara fria (painel C, à direita) com tratamento SteriClean.",
+      "Imagem ilustrativa do processo. É a corrente elétrica aplicada à solução de água e sal que transforma esses insumos no líquido fornecido. Consulte a ficha técnica para diluição, modo de uso, armazenamento e validade.",
     body:
-      "Por atuar fisicamente, e não por rota bioquímica, o patógeno não desenvolve resistência ao longo das safras — diferente dos fungicidas convencionais, que perdem eficácia a cada ciclo de uso.",
+      "Esta página descreve o processo de obtenção do produto e o seu uso pretendido. Ela não atribui ao SteriClean registro, validação ou aprovação por órgão público, nem alegação de eficácia biocida, sanitizante ou desinfetante.",
     cards: [
       {
         title: "Base água",
-        text: "Formulação aquosa, sem solvente e sem resíduo químico no fruto.",
+        text: "Formulação aquosa obtida de água e sal, sem solvente adicionado.",
       },
       {
-        title: "Ação por contato",
-        text: "Oxidação imediata de fungos, bactérias e vírus na superfície tratada.",
+        title: "Processo eletroquímico",
+        text: "Produzido por eletrólise da água, com controle de processo na fábrica.",
       },
       {
-        title: "Zero resistência",
-        text: "Modo de ação físico: não há pressão de seleção sobre o patógeno.",
+        title: "Pronto para diluir",
+        text: "Diluição, aplicação e armazenamento conforme a orientação técnica.",
       },
       {
-        title: "Compatível",
-        text: "Uso em campo, pós-colheita, câmara fria e sanitização de ambientes.",
+        title: "Uso pretendido",
+        text: "Adjuvante para uso agrícola — credenciamento junto ao MAPA em andamento.",
       },
     ],
   },
   timeline: {
     eyebrow: "Trajetória institucional",
     title: "Da Hungria ao Paraná",
-    lead:
-      "A chegada do SteriClean ao Brasil foi construída com respaldo público e científico.",
+    lead: "Marcos da implantação da tecnologia e da produção no Brasil.",
     items: [
       {
         year: "2023",
         title: "Palácio Iguaçu, Curitiba",
-        text: "Assinatura do acordo com o Governo do Paraná e o Consulado da Hungria.",
+        text: "Encontro com representantes do Governo do Paraná e do Consulado da Hungria sobre a vinda da tecnologia e do investimento industrial para o estado.",
       },
       {
         year: "2025",
@@ -172,93 +175,88 @@ const pt: Dict = {
         text: "Inauguração da unidade em 31/03/2026, dentro do parque de inovação.",
       },
     ],
+    note:
+      "Os marcos acima referem-se ao projeto industrial e à presença da empresa no estado. Não constituem validação, aprovação ou chancela do produto por órgão público.",
   },
   crops: {
-    eyebrow: "Prova de campo",
-    title: "Resultados por cultura",
-    lead: "Dados de ensaios conduzidos com produtores, cooperativas e instituições de pesquisa.",
+    eyebrow: "Aplicação",
+    title: "Culturas e contextos de uso",
+    lead:
+      "Onde o SteriClean é aplicado e em que etapa do processo, sempre conforme a orientação técnica definida para cada cultura.",
     labels: {
-      results: "Resultados técnicos",
+      application: "Modo de uso",
       environment: "Ambiente",
-      conclusion: "Conclusão",
+      note: "Observação",
     },
     items: [
       {
         key: "maca",
         name: "Maçã Fuji",
-        stat: "88,7%",
-        statLabel: "menos esporos nos frutos",
-        results:
-          "Redução de 84,8% de Penicillium expansum no ar e de 88,7% nos esporos presentes nos frutos.",
-        environment: "Câmaras frias de armazenamento pós-colheita.",
-        conclusion:
-          "Queda expressiva da pressão de inóculo no armazenamento, reduzindo perdas por podridão azul.",
+        stage: "Pós-colheita",
+        application:
+          "Aplicação na etapa de pós-colheita, com diluição e frequência definidas na orientação técnica.",
+        environment: "Câmaras frias de armazenamento.",
+        note: "Uso integrado às rotinas de higienização e manejo do armazenamento.",
       },
       {
         key: "tomate",
         name: "Tomate",
-        stat: "+13%",
-        statLabel: "licopeno (7,04 → 7,96 mg/kg)",
-        results: "°Brix de 3,63 para 4,10; licopeno de 7,04 para 7,96 mg/kg; +9% no peso médio do fruto.",
-        environment: "Cultivo comercial com aplicação foliar programada.",
-        conclusion: "Ganho simultâneo de qualidade sensorial, valor nutricional e produtividade.",
+        stage: "Campo",
+        application: "Aplicação foliar programada ao longo do ciclo da cultura.",
+        environment: "Cultivo comercial.",
+        note: "Uso como adjuvante dentro do programa de manejo adotado pelo produtor.",
       },
       {
         key: "uva",
         name: "Uva / Videira",
-        stat: "0",
-        statLabel: "sinais de fitotoxicidade",
-        results: "Controle de míldio com eficiência comparável ao padrão adotado pelo produtor.",
-        environment: "Parreirais comerciais em ciclo completo.",
-        conclusion:
-          "Substituição parcial do programa químico sem perda de controle e sem dano à planta.",
+        stage: "Campo",
+        application:
+          "Aplicação no parreiral ao longo do ciclo, conforme a orientação técnica.",
+        environment: "Parreirais comerciais.",
+        note: "Uso como adjuvante, sem substituição do programa fitossanitário do produtor.",
       },
       {
         key: "morango",
         name: "Morango",
-        stat: "31 dias",
-        statLabel: "de vida de prateleira (era 14)",
-        results: "Vida de prateleira ampliada de 14 para 31 dias após tratamento.",
-        environment: "Pós-colheita, bandejas em condição comercial.",
-        conclusion: "Mais que o dobro de janela de comercialização e queda direta no descarte.",
+        stage: "Pós-colheita",
+        application:
+          "Aplicação em pós-colheita, antes do acondicionamento em bandejas.",
+        environment: "Pós-colheita, em condição comercial.",
+        note: "Uso integrado às boas práticas de higienização e conservação.",
       },
       {
         key: "citros",
         name: "Citros",
-        stat: "↑",
-        statLabel: "mortalidade do psilídeo asiático",
-        results: "Melhor mortalidade do psilídeo asiático com SteriClean associado a óleo de laranja.",
-        environment: "Ensaio Coacipar, Paranavaí/PR.",
-        conclusion: "Ferramenta adicional no manejo do vetor do greening, com baixo impacto residual.",
+        stage: "Campo",
+        application:
+          "Aplicação em campo, isolada ou em calda com outros insumos, conforme a orientação técnica.",
+        environment: "Pomares comerciais no Paraná.",
+        note: "Uso como adjuvante no programa de manejo do pomar.",
       },
       {
         key: "manga",
         name: "Manga",
-        stat: "90–100%",
-        statLabel: "redução da população fúngica",
-        results:
-          "Redução de 90% a 100% de Aspergillus niger e Glomerella sp., sem dano à epiderme do fruto.",
-        environment: "Ensaio Embrapa Semiárido, Petrolina/PE — linha de beneficiamento.",
-        conclusion: "Sanitização eficaz na esteira de processamento, preservando a aparência comercial.",
+        stage: "Beneficiamento",
+        application:
+          "Aplicação na linha de beneficiamento, na etapa de lavagem dos frutos.",
+        environment: "Packing house — esteira de processamento.",
+        note: "Uso integrado às rotinas de limpeza da linha de processamento.",
       },
       {
         key: "cevada",
         name: "Cevada",
-        stat: "93,2%",
-        statLabel: "de brotação (pico observado)",
-        results: "Brotação de 87,4% a 93,2%; perdas da cadeia caíram de 25% para 8%.",
-        environment: "Cadeia maltadora em Guarapuava/PR.",
-        conclusion: "Menos perda entre lavoura e maltaria, com grão mais uniforme.",
+        stage: "Pós-colheita",
+        application: "Tratamento do grão nas etapas entre a lavoura e a maltaria.",
+        environment: "Cadeia maltadora no Paraná.",
+        note: "Uso integrado às rotinas de manejo e armazenagem do grão.",
       },
       {
         key: "trigo",
         name: "Trigo",
-        stat: "↓",
-        statLabel: "podridão interna por giberela",
-        results:
-          "Redução da podridão interna causada por Fusarium graminearum, sem impacto sobre a floração.",
-        environment: "Aplicação em janela de floração.",
-        conclusion: "Proteção do grão em um dos períodos mais críticos da cultura.",
+        stage: "Campo",
+        application: "Aplicação na janela de floração, conforme a orientação técnica.",
+        environment: "Lavoura comercial.",
+        note: "Uso como adjuvante dentro do programa de manejo da cultura.",
       },
     ],
   },
@@ -270,33 +268,48 @@ const pt: Dict = {
         name: "SteriClean Agro",
         text: "Para lavoura, pós-colheita e armazenamento.",
         bullets: [
-          "Controle de fungos e bactérias",
-          "Apoio no manejo de pragas",
-          "Qualidade e vida de prateleira",
-          "Produtividade e uniformidade",
+          "Adjuvante para uso agrícola",
+          "Aplicação em campo, pós-colheita e armazenamento",
+          "Diluição e manejo conforme orientação técnica",
+          "Credenciamento junto ao MAPA em andamento",
         ],
       },
       {
         name: "SteriClean Vet",
-        text: "Para sanitização de ambientes de produção animal.",
+        text: "Para rotinas de limpeza em ambientes de produção animal.",
         bullets: [
-          "Salmonella em aviários",
-          "Vírus Seneca em suinocultura",
-          "Mastite bovina",
-          "Higienização de instalações e equipamentos",
+          "Limpeza de instalações",
+          "Higienização de equipamentos e superfícies",
+          "Apoio às rotinas de manejo e boas práticas",
+          "Uso conforme orientação técnica",
         ],
       },
     ],
+    disclaimer:
+      "As descrições acima referem-se ao uso pretendido do produto. O SteriClean não possui registro como saneante com ação antimicrobiana e não é apresentado como sanitizante, desinfetante ou substituto de defensivo agrícola registrado.",
   },
   sustainability: {
-    eyebrow: "Sustentabilidade",
-    title: "Eficiência sem passivo ambiental",
-    lead: "Comparado ao programa químico tradicional, o SteriClean muda a equação.",
+    eyebrow: "Boas práticas",
+    title: "Insumos simples, uso orientado",
+    lead:
+      "O que se pode afirmar hoje sobre o produto: a sua origem, o seu processo de fabricação e o seu modo de uso.",
     items: [
-      { title: "Sem resíduo químico", text: "Produto à base de água: nada de resíduo no fruto ou no solo." },
-      { title: "Sem resistência", text: "O modo de ação físico não seleciona populações resistentes." },
-      { title: "Sem carência", text: "Compatível com colheita e beneficiamento imediatos." },
-      { title: "Menos descarte", text: "Vida de prateleira maior reduz perda de alimento na cadeia." },
+      {
+        title: "Água e sal",
+        text: "Obtido a partir de água e sal, por processo eletroquímico.",
+      },
+      {
+        title: "Sem solvente adicionado",
+        text: "Formulação aquosa, sem adição de solventes à solução.",
+      },
+      {
+        title: "Modo de uso definido",
+        text: "Diluição, aplicação, armazenamento e validade descritos na ficha técnica.",
+      },
+      {
+        title: "Produção nacional",
+        text: "Fabricado no Paraná, na unidade instalada no Biopark, em Toledo.",
+      },
     ],
   },
   contact: {
@@ -315,141 +328,177 @@ const pt: Dict = {
       { label: "Fábrica", value: "Biopark — Toledo / PR" },
     ],
   },
-  footer: { rights: "Todos os direitos reservados.", partners: "Parceiros" },
+  footer: {
+    rights: "Todos os direitos reservados.",
+    partners: "Parceiros",
+    disclaimer:
+      "SteriClean é um adjuvante para uso agrícola, produzido a partir de água e sal por processo de eletrólise, desenvolvido em parceria com a Ferticerto. O credenciamento junto ao MAPA está em andamento. Este site não atribui ao produto registro, validação ou aprovação por órgão público, nem alegação de eficácia biocida, sanitizante ou desinfetante.",
+  },
 };
 
 const es: Dict = {
   meta: {
-    title: "SteriClean — Sanitizante agrícola de tecnología húngara en Brasil",
+    title: "SteriClean — Adyuvante de uso agrícola producido por electrólisis",
     description:
-      "SteriClean es un sanitizante y acondicionador a base de agua que oxida hongos y bacterias sin residuo químico y sin generar resistencia. Resultados comprobados en manzana, tomate, uva, frutilla, cítricos, mango, cebada y trigo.",
+      "SteriClean es un adyuvante de uso agrícola obtenido a partir de agua y sal mediante un proceso electroquímico de electrólisis. La habilitación ante el MAPA está en trámite.",
   },
   nav: {
-    mechanism: "Cómo funciona",
-    results: "Resultados",
+    mechanism: "Tecnología",
+    results: "Cultivos",
     lines: "Líneas",
-    sustainability: "Sostenibilidad",
+    sustainability: "Buenas prácticas",
     contact: "Contacto",
   },
   hero: {
     eyebrow: "Tecnología húngara · Producción en Paraná",
-    title: "El fin de la resistencia a los fungicidas",
-    highlight: "empieza con oxidación directa",
+    title: "Tecnología de agua electrolizada",
+    highlight: "para el manejo agrícola",
     subtitle:
-      "SteriClean no envenena al hongo: rompe la pared celular por oxidación, como hacen los leucocitos en el cuerpo humano. Sin residuo, sin carencia, sin resistencia microbiana.",
+      "SteriClean es un adyuvante de uso agrícola, producido a partir de agua y sal mediante un proceso de electrólisis, desarrollado en alianza con Ferticerto. La habilitación ante el MAPA está en trámite.",
     ctaPrimary: "Hablar con un especialista",
-    ctaSecondary: "Ver resultados",
+    ctaSecondary: "Ver cultivos",
     stats: [
-      { value: "88,7%", label: "menos esporas en manzana Fuji" },
-      { value: "31 días", label: "vida útil de la frutilla (antes 14)" },
-      { value: "90–100%", label: "reducción fúngica en mango · Embrapa" },
+      { value: "Agua + sal", label: "insumos del proceso electroquímico" },
+      { value: "Electrólisis", label: "tecnología de agua electrolizada" },
+      {
+        value: "Uso agrícola",
+        label: "adyuvante — habilitación ante el MAPA en trámite",
+      },
     ],
   },
   mechanism: {
-    eyebrow: "Mecanismo de acción",
-    title: "Oxidación directa, no química sistémica",
+    eyebrow: "La tecnología",
+    title: "Agua electrolizada, obtenida de agua y sal",
     lead:
-      "La molécula activa de SteriClean se genera a partir del agua y actúa por contacto: oxida la membrana del microorganismo en segundos.",
-    punch: "No envenena al hongo. Rompe la piel del hongo.",
-    figureTitle: "Figura 3 — Colonias de Penicillium recuperadas del lavado de los frutos",
+      "La solución de SteriClean se produce por electrólisis: una corriente eléctrica aplicada a una solución de agua y sal transforma esos insumos en un líquido listo para diluir y usar, sin agregado de solventes.",
+    punch: "Agua y sal, transformados por corriente eléctrica.",
+    figureTitle: "Electrólisis — corriente eléctrica aplicada a la solución",
     figureCaption:
-      "Placas con colonias de Penicillium (colonias verdes) recuperadas del lavado de los frutos del testigo (panel A, a la izquierda), y de las partes inferior (panel B, al centro) y superior de la cámara fría (panel C, a la derecha) con tratamiento SteriClean.",
+      "Imagen ilustrativa del proceso. Es la corriente eléctrica aplicada a la solución de agua y sal la que transforma esos insumos en el líquido suministrado. Consulte la ficha técnica para dilución, modo de uso, almacenamiento y vencimiento.",
     body:
-      "Al actuar físicamente y no por ruta bioquímica, el patógeno no desarrolla resistencia a lo largo de las zafras, a diferencia de los fungicidas convencionales, que pierden eficacia en cada ciclo.",
+      "Esta página describe el proceso de obtención del producto y su uso previsto. No le atribuye registro, validación ni aprobación por parte de organismos públicos, ni alegación de eficacia biocida, sanitizante o desinfectante.",
     cards: [
-      { title: "Base agua", text: "Formulación acuosa, sin solvente y sin residuo químico en el fruto." },
-      { title: "Acción por contacto", text: "Oxidación inmediata de hongos, bacterias y virus en la superficie tratada." },
-      { title: "Cero resistencia", text: "Modo de acción físico: no hay presión de selección sobre el patógeno." },
-      { title: "Compatible", text: "Uso en campo, poscosecha, cámara fría y sanitización de ambientes." },
+      {
+        title: "Base agua",
+        text: "Formulación acuosa obtenida de agua y sal, sin solvente agregado.",
+      },
+      {
+        title: "Proceso electroquímico",
+        text: "Producido por electrólisis del agua, con control de proceso en la planta.",
+      },
+      {
+        title: "Listo para diluir",
+        text: "Dilución, aplicación y almacenamiento según la orientación técnica.",
+      },
+      {
+        title: "Uso previsto",
+        text: "Adyuvante de uso agrícola — habilitación ante el MAPA en trámite.",
+      },
     ],
   },
   timeline: {
     eyebrow: "Trayectoria institucional",
     title: "De Hungría a Paraná",
-    lead: "La llegada de SteriClean a Brasil se construyó con respaldo público y científico.",
+    lead: "Hitos de la implantación de la tecnología y de la producción en Brasil.",
     items: [
-      { year: "2023", title: "Palacio Iguaçu, Curitiba", text: "Firma del acuerdo con el Gobierno de Paraná y el Consulado de Hungría." },
-      { year: "2025", title: "Agroleite, Castro/PR", text: "Anuncio de la planta Sanfer para producción nacional de SteriClean." },
-      { year: "2026", title: "Biopark, Toledo/PR", text: "Inauguración de la unidad el 31/03/2026, dentro del parque de innovación." },
+      {
+        year: "2023",
+        title: "Palacio Iguaçu, Curitiba",
+        text: "Encuentro con representantes del Gobierno de Paraná y del Consulado de Hungría sobre la llegada de la tecnología y de la inversión industrial al estado.",
+      },
+      {
+        year: "2025",
+        title: "Agroleite, Castro/PR",
+        text: "Anuncio de la planta Sanfer para la producción nacional de SteriClean.",
+      },
+      {
+        year: "2026",
+        title: "Biopark, Toledo/PR",
+        text: "Inauguración de la unidad el 31/03/2026, dentro del parque de innovación.",
+      },
     ],
+    note:
+      "Los hitos anteriores se refieren al proyecto industrial y a la presencia de la empresa en el estado. No constituyen validación, aprobación ni aval del producto por parte de organismos públicos.",
   },
   crops: {
-    eyebrow: "Prueba de campo",
-    title: "Resultados por cultivo",
-    lead: "Datos de ensayos con productores, cooperativas e instituciones de investigación.",
-    labels: { results: "Resultados técnicos", environment: "Ambiente", conclusion: "Conclusión" },
+    eyebrow: "Aplicación",
+    title: "Cultivos y contextos de uso",
+    lead:
+      "Dónde se aplica SteriClean y en qué etapa del proceso, siempre según la orientación técnica definida para cada cultivo.",
+    labels: {
+      application: "Modo de uso",
+      environment: "Ambiente",
+      note: "Observación",
+    },
     items: [
       {
         key: "maca",
         name: "Manzana Fuji",
-        stat: "88,7%",
-        statLabel: "menos esporas en los frutos",
-        results: "Reducción del 84,8% de Penicillium expansum en el aire y del 88,7% en las esporas de los frutos.",
-        environment: "Cámaras frías de almacenamiento poscosecha.",
-        conclusion: "Fuerte caída de la presión de inóculo, reduciendo pérdidas por moho azul.",
+        stage: "Poscosecha",
+        application:
+          "Aplicación en la etapa de poscosecha, con dilución y frecuencia definidas en la orientación técnica.",
+        environment: "Cámaras frías de almacenamiento.",
+        note: "Uso integrado a las rutinas de higienización y manejo del almacenamiento.",
       },
       {
         key: "tomate",
         name: "Tomate",
-        stat: "+13%",
-        statLabel: "licopeno (7,04 → 7,96 mg/kg)",
-        results: "°Brix de 3,63 a 4,10; licopeno de 7,04 a 7,96 mg/kg; +9% en el peso medio del fruto.",
-        environment: "Cultivo comercial con aplicación foliar programada.",
-        conclusion: "Ganancia simultánea de calidad sensorial, valor nutricional y productividad.",
+        stage: "Campo",
+        application: "Aplicación foliar programada a lo largo del ciclo del cultivo.",
+        environment: "Cultivo comercial.",
+        note: "Uso como adyuvante dentro del programa de manejo del productor.",
       },
       {
         key: "uva",
         name: "Uva / Vid",
-        stat: "0",
-        statLabel: "señales de fitotoxicidad",
-        results: "Control de mildiu con eficiencia comparable al estándar del productor.",
-        environment: "Viñedos comerciales en ciclo completo.",
-        conclusion: "Sustitución parcial del programa químico sin pérdida de control ni daño a la planta.",
+        stage: "Campo",
+        application:
+          "Aplicación en el viñedo a lo largo del ciclo, según la orientación técnica.",
+        environment: "Viñedos comerciales.",
+        note: "Uso como adyuvante, sin sustituir el programa fitosanitario del productor.",
       },
       {
         key: "morango",
         name: "Frutilla",
-        stat: "31 días",
-        statLabel: "de vida útil (antes 14)",
-        results: "Vida útil ampliada de 14 a 31 días tras el tratamiento.",
-        environment: "Poscosecha, bandejas en condición comercial.",
-        conclusion: "Más del doble de ventana comercial y caída directa del descarte.",
+        stage: "Poscosecha",
+        application:
+          "Aplicación en poscosecha, antes del acondicionamiento en bandejas.",
+        environment: "Poscosecha, en condición comercial.",
+        note: "Uso integrado a las buenas prácticas de higienización y conservación.",
       },
       {
         key: "citros",
         name: "Cítricos",
-        stat: "↑",
-        statLabel: "mortalidad del psílido asiático",
-        results: "Mejor mortalidad del psílido asiático con SteriClean asociado a aceite de naranja.",
-        environment: "Ensayo Coacipar, Paranavaí/PR.",
-        conclusion: "Herramienta adicional en el manejo del vector del HLB, con bajo impacto residual.",
+        stage: "Campo",
+        application:
+          "Aplicación en campo, sola o en caldo con otros insumos, según la orientación técnica.",
+        environment: "Huertos comerciales en Paraná.",
+        note: "Uso como adyuvante en el programa de manejo del huerto.",
       },
       {
         key: "manga",
         name: "Mango",
-        stat: "90–100%",
-        statLabel: "reducción de la población fúngica",
-        results: "Reducción del 90% al 100% de Aspergillus niger y Glomerella sp., sin daño a la epidermis.",
-        environment: "Ensayo Embrapa Semiárido, Petrolina/PE — línea de empaque.",
-        conclusion: "Sanitización eficaz en la cinta de procesamiento, preservando la apariencia comercial.",
+        stage: "Empaque",
+        application:
+          "Aplicación en la línea de empaque, en la etapa de lavado de los frutos.",
+        environment: "Packing house — cinta de procesamiento.",
+        note: "Uso integrado a las rutinas de limpieza de la línea de procesamiento.",
       },
       {
         key: "cevada",
         name: "Cebada",
-        stat: "93,2%",
-        statLabel: "de germinación (pico observado)",
-        results: "Germinación del 87,4% al 93,2%; pérdidas de la cadena bajaron del 25% al 8%.",
-        environment: "Cadena maltera en Guarapuava/PR.",
-        conclusion: "Menos pérdida entre campo y maltería, con grano más uniforme.",
+        stage: "Poscosecha",
+        application: "Tratamiento del grano en las etapas entre el campo y la maltería.",
+        environment: "Cadena maltera en Paraná.",
+        note: "Uso integrado a las rutinas de manejo y almacenamiento del grano.",
       },
       {
         key: "trigo",
         name: "Trigo",
-        stat: "↓",
-        statLabel: "pudrición interna por fusariosis",
-        results: "Reducción de la pudrición interna causada por Fusarium graminearum, sin impacto en la floración.",
-        environment: "Aplicación en ventana de floración.",
-        conclusion: "Protección del grano en uno de los períodos más críticos del cultivo.",
+        stage: "Campo",
+        application: "Aplicación en la ventana de floración, según la orientación técnica.",
+        environment: "Cultivo comercial.",
+        note: "Uso como adyuvante dentro del programa de manejo del cultivo.",
       },
     ],
   },
@@ -460,24 +509,49 @@ const es: Dict = {
       {
         name: "SteriClean Agro",
         text: "Para campo, poscosecha y almacenamiento.",
-        bullets: ["Control de hongos y bacterias", "Apoyo en el manejo de plagas", "Calidad y vida útil", "Productividad y uniformidad"],
+        bullets: [
+          "Adyuvante de uso agrícola",
+          "Aplicación en campo, poscosecha y almacenamiento",
+          "Dilución y manejo según orientación técnica",
+          "Habilitación ante el MAPA en trámite",
+        ],
       },
       {
         name: "SteriClean Vet",
-        text: "Para sanitización de ambientes de producción animal.",
-        bullets: ["Salmonella en avicultura", "Virus Seneca en porcinos", "Mastitis bovina", "Higienización de instalaciones y equipos"],
+        text: "Para rutinas de limpieza en ambientes de producción animal.",
+        bullets: [
+          "Limpieza de instalaciones",
+          "Higienización de equipos y superficies",
+          "Apoyo a las rutinas de manejo y buenas prácticas",
+          "Uso según orientación técnica",
+        ],
       },
     ],
+    disclaimer:
+      "Las descripciones anteriores se refieren al uso previsto del producto. SteriClean no cuenta con registro como saneante con acción antimicrobiana y no se presenta como sanitizante, desinfectante ni sustituto de un fitosanitario registrado.",
   },
   sustainability: {
-    eyebrow: "Sostenibilidad",
-    title: "Eficiencia sin pasivo ambiental",
-    lead: "Comparado con el programa químico tradicional, SteriClean cambia la ecuación.",
+    eyebrow: "Buenas prácticas",
+    title: "Insumos simples, uso orientado",
+    lead:
+      "Lo que se puede afirmar hoy sobre el producto: su origen, su proceso de fabricación y su modo de uso.",
     items: [
-      { title: "Sin residuo químico", text: "Producto a base de agua: sin residuo en el fruto ni en el suelo." },
-      { title: "Sin resistencia", text: "El modo de acción físico no selecciona poblaciones resistentes." },
-      { title: "Sin carencia", text: "Compatible con cosecha y procesamiento inmediatos." },
-      { title: "Menos descarte", text: "Mayor vida útil reduce la pérdida de alimento en la cadena." },
+      {
+        title: "Agua y sal",
+        text: "Obtenido a partir de agua y sal, por proceso electroquímico.",
+      },
+      {
+        title: "Sin solvente agregado",
+        text: "Formulación acuosa, sin agregado de solventes a la solución.",
+      },
+      {
+        title: "Modo de uso definido",
+        text: "Dilución, aplicación, almacenamiento y vencimiento descritos en la ficha técnica.",
+      },
+      {
+        title: "Producción nacional",
+        text: "Fabricado en Paraná, en la unidad instalada en el Biopark, en Toledo.",
+      },
     ],
   },
   contact: {
@@ -496,141 +570,175 @@ const es: Dict = {
       { label: "Planta", value: "Biopark — Toledo / PR" },
     ],
   },
-  footer: { rights: "Todos los derechos reservados.", partners: "Socios" },
+  footer: {
+    rights: "Todos los derechos reservados.",
+    partners: "Socios",
+    disclaimer:
+      "SteriClean es un adyuvante de uso agrícola, producido a partir de agua y sal mediante un proceso de electrólisis, desarrollado en alianza con Ferticerto. La habilitación ante el MAPA está en trámite. Este sitio no le atribuye al producto registro, validación ni aprobación por parte de organismos públicos, ni alegación de eficacia biocida, sanitizante o desinfectante.",
+  },
 };
 
 const en: Dict = {
   meta: {
-    title: "SteriClean — Hungarian sanitizing technology for Brazilian agriculture",
+    title: "SteriClean — Agricultural adjuvant produced by electrolysis",
     description:
-      "SteriClean is a water-based sanitizer and conditioner that oxidizes fungi and bacteria with no chemical residue and no microbial resistance. Proven results in apple, tomato, grape, strawberry, citrus, mango, barley and wheat.",
+      "SteriClean is an agricultural adjuvant obtained from water and salt through an electrochemical electrolysis process. Accreditation with Brazil's MAPA is in progress.",
   },
   nav: {
-    mechanism: "How it works",
-    results: "Results",
+    mechanism: "Technology",
+    results: "Crops",
     lines: "Product lines",
-    sustainability: "Sustainability",
+    sustainability: "Good practice",
     contact: "Contact",
   },
   hero: {
     eyebrow: "Hungarian technology · Made in Paraná",
-    title: "The end of fungicide resistance",
-    highlight: "starts with direct oxidation",
+    title: "Electrolyzed water technology",
+    highlight: "for agricultural management",
     subtitle:
-      "SteriClean doesn't poison the fungus — it ruptures the cell wall by oxidation, the way leukocytes do in the human body. No residue, no pre-harvest interval, no microbial resistance.",
+      "SteriClean is an agricultural adjuvant, produced from water and salt through an electrolysis process, developed in partnership with Ferticerto. Accreditation with Brazil's MAPA is in progress.",
     ctaPrimary: "Talk to a specialist",
-    ctaSecondary: "See results",
+    ctaSecondary: "See crops",
     stats: [
-      { value: "88.7%", label: "spore reduction in Fuji apple" },
-      { value: "31 days", label: "strawberry shelf life (was 14)" },
-      { value: "90–100%", label: "fungal reduction in mango · Embrapa" },
+      { value: "Water + salt", label: "inputs of the electrochemical process" },
+      { value: "Electrolysis", label: "electrolyzed water technology" },
+      {
+        value: "Agricultural use",
+        label: "adjuvant — MAPA accreditation in progress",
+      },
     ],
   },
   mechanism: {
-    eyebrow: "Mode of action",
-    title: "Direct oxidation, not systemic chemistry",
+    eyebrow: "The technology",
+    title: "Electrolyzed water, obtained from water and salt",
     lead:
-      "SteriClean's active molecule is generated from water and acts on contact: it oxidizes the microorganism's membrane in seconds.",
-    punch: "It doesn't poison the fungus. It tears the fungus open.",
-    figureTitle: "Figure 3 — Penicillium colonies recovered from fruit washing",
+      "SteriClean's solution is produced by electrolysis: an electric current applied to a water-and-salt solution turns those inputs into a liquid ready for dilution and use, with no solvents added.",
+    punch: "Water and salt, transformed by electric current.",
+    figureTitle: "Electrolysis — electric current applied to the solution",
     figureCaption:
-      "Plates with Penicillium colonies (green colonies) recovered from washing the control fruit (panel A, left), and from the lower (panel B, center) and upper (panel C, right) areas of the cold chamber under SteriClean treatment.",
+      "Illustrative image of the process. It is the electric current applied to the water-and-salt solution that turns those inputs into the liquid supplied. See the technical data sheet for dilution, use, storage and shelf life.",
     body:
-      "Because the action is physical rather than biochemical, pathogens don't build resistance season after season — unlike conventional fungicides, which lose efficacy with every cycle of use.",
+      "This page describes how the product is obtained and its intended use. It does not attribute to SteriClean any registration, validation or approval by a public body, nor any biocidal, sanitizing or disinfectant efficacy claim.",
     cards: [
-      { title: "Water-based", text: "Aqueous formulation, solvent-free and residue-free on the fruit." },
-      { title: "Contact action", text: "Immediate oxidation of fungi, bacteria and viruses on the treated surface." },
-      { title: "Zero resistance", text: "Physical mode of action means no selection pressure on the pathogen." },
-      { title: "Versatile", text: "Field, post-harvest, cold storage and facility sanitation." },
+      {
+        title: "Water-based",
+        text: "Aqueous formulation obtained from water and salt, with no solvent added.",
+      },
+      {
+        title: "Electrochemical process",
+        text: "Produced by electrolysis of water, with process control at the plant.",
+      },
+      {
+        title: "Ready to dilute",
+        text: "Dilution, application and storage according to technical guidance.",
+      },
+      {
+        title: "Intended use",
+        text: "Agricultural adjuvant — MAPA accreditation in progress.",
+      },
     ],
   },
   timeline: {
     eyebrow: "Institutional track record",
     title: "From Hungary to Paraná",
-    lead: "SteriClean's arrival in Brazil was built on public and scientific backing.",
+    lead: "Milestones in bringing the technology and its production to Brazil.",
     items: [
-      { year: "2023", title: "Iguaçu Palace, Curitiba", text: "Agreement signed with the Government of Paraná and the Consulate of Hungary." },
-      { year: "2025", title: "Agroleite, Castro/PR", text: "Announcement of the Sanfer plant for domestic SteriClean production." },
-      { year: "2026", title: "Biopark, Toledo/PR", text: "Facility inaugurated on 03/31/2026 inside the innovation park." },
+      {
+        year: "2023",
+        title: "Iguaçu Palace, Curitiba",
+        text: "Meeting with representatives of the Government of Paraná and the Consulate of Hungary about bringing the technology and the industrial investment to the state.",
+      },
+      {
+        year: "2025",
+        title: "Agroleite, Castro/PR",
+        text: "Announcement of the Sanfer plant for domestic SteriClean production.",
+      },
+      {
+        year: "2026",
+        title: "Biopark, Toledo/PR",
+        text: "Facility inaugurated on 03/31/2026 inside the innovation park.",
+      },
     ],
+    note:
+      "The milestones above refer to the industrial project and the company's presence in the state. They do not constitute validation, approval or endorsement of the product by any public body.",
   },
   crops: {
-    eyebrow: "Field evidence",
-    title: "Results by crop",
-    lead: "Data from trials run with growers, cooperatives and research institutions.",
-    labels: { results: "Technical results", environment: "Setting", conclusion: "Takeaway" },
+    eyebrow: "Application",
+    title: "Crops and use contexts",
+    lead:
+      "Where SteriClean is applied and at which stage of the process, always according to the technical guidance defined for each crop.",
+    labels: {
+      application: "How it is used",
+      environment: "Setting",
+      note: "Note",
+    },
     items: [
       {
         key: "maca",
         name: "Fuji apple",
-        stat: "88.7%",
-        statLabel: "fewer spores on the fruit",
-        results: "84.8% reduction of airborne Penicillium expansum and 88.7% of spores on the fruit.",
-        environment: "Post-harvest cold storage chambers.",
-        conclusion: "Sharp drop in inoculum pressure during storage, cutting blue mold losses.",
+        stage: "Post-harvest",
+        application:
+          "Applied at the post-harvest stage, with dilution and frequency set by the technical guidance.",
+        environment: "Cold storage chambers.",
+        note: "Used as part of storage hygiene and management routines.",
       },
       {
         key: "tomate",
         name: "Tomato",
-        stat: "+13%",
-        statLabel: "lycopene (7.04 → 7.96 mg/kg)",
-        results: "Brix from 3.63 to 4.10; lycopene from 7.04 to 7.96 mg/kg; +9% average fruit weight.",
-        environment: "Commercial crop with scheduled foliar application.",
-        conclusion: "Simultaneous gains in flavor quality, nutrition and yield.",
+        stage: "Field",
+        application: "Scheduled foliar application through the crop cycle.",
+        environment: "Commercial crop.",
+        note: "Used as an adjuvant within the grower's management program.",
       },
       {
         key: "uva",
         name: "Grape / Vine",
-        stat: "0",
-        statLabel: "signs of phytotoxicity",
-        results: "Downy mildew control on par with the grower's standard program.",
-        environment: "Commercial vineyards over a full cycle.",
-        conclusion: "Partial replacement of the chemical program with no loss of control and no plant damage.",
+        stage: "Field",
+        application:
+          "Applied in the vineyard through the cycle, according to technical guidance.",
+        environment: "Commercial vineyards.",
+        note: "Used as an adjuvant, without replacing the grower's crop protection program.",
       },
       {
         key: "morango",
         name: "Strawberry",
-        stat: "31 days",
-        statLabel: "shelf life (was 14)",
-        results: "Shelf life extended from 14 to 31 days after treatment.",
-        environment: "Post-harvest, trays under commercial conditions.",
-        conclusion: "More than double the selling window and a direct drop in waste.",
+        stage: "Post-harvest",
+        application: "Applied post-harvest, before packing into trays.",
+        environment: "Post-harvest, commercial conditions.",
+        note: "Used as part of hygiene and conservation good practice.",
       },
       {
         key: "citros",
         name: "Citrus",
-        stat: "↑",
-        statLabel: "Asian citrus psyllid mortality",
-        results: "Higher psyllid mortality with SteriClean combined with orange oil.",
-        environment: "Coacipar trial, Paranavaí/PR.",
-        conclusion: "An added tool for greening vector management with low residual impact.",
+        stage: "Field",
+        application:
+          "Applied in the field, alone or in tank mix with other inputs, according to technical guidance.",
+        environment: "Commercial groves in Paraná.",
+        note: "Used as an adjuvant within the grove's management program.",
       },
       {
         key: "manga",
         name: "Mango",
-        stat: "90–100%",
-        statLabel: "fungal population reduction",
-        results: "90–100% reduction of Aspergillus niger and Glomerella sp., with no skin damage.",
-        environment: "Embrapa Semiárido trial, Petrolina/PE — packing line.",
-        conclusion: "Effective sanitation on the processing belt while preserving commercial appearance.",
+        stage: "Packing",
+        application: "Applied on the packing line, at the fruit washing stage.",
+        environment: "Packing house — processing belt.",
+        note: "Used as part of the processing line's cleaning routines.",
       },
       {
         key: "cevada",
         name: "Barley",
-        stat: "93.2%",
-        statLabel: "germination (observed peak)",
-        results: "Germination from 87.4% to 93.2%; chain losses down from 25% to 8%.",
-        environment: "Malting chain in Guarapuava/PR.",
-        conclusion: "Less loss between field and maltings, with more uniform grain.",
+        stage: "Post-harvest",
+        application: "Grain treatment in the stages between field and maltings.",
+        environment: "Malting chain in Paraná.",
+        note: "Used as part of grain handling and storage routines.",
       },
       {
         key: "trigo",
         name: "Wheat",
-        stat: "↓",
-        statLabel: "internal rot from head blight",
-        results: "Reduced internal rot caused by Fusarium graminearum, with no impact on flowering.",
-        environment: "Applied during the flowering window.",
-        conclusion: "Grain protection during one of the crop's most critical periods.",
+        stage: "Field",
+        application: "Applied during the flowering window, according to technical guidance.",
+        environment: "Commercial crop.",
+        note: "Used as an adjuvant within the crop's management program.",
       },
     ],
   },
@@ -641,24 +749,49 @@ const en: Dict = {
       {
         name: "SteriClean Agro",
         text: "For field, post-harvest and storage.",
-        bullets: ["Fungal and bacterial control", "Support in pest management", "Quality and shelf life", "Yield and uniformity"],
+        bullets: [
+          "Agricultural adjuvant",
+          "Application in field, post-harvest and storage",
+          "Dilution and handling according to technical guidance",
+          "MAPA accreditation in progress",
+        ],
       },
       {
         name: "SteriClean Vet",
-        text: "For sanitation of animal production environments.",
-        bullets: ["Salmonella in poultry houses", "Seneca virus in swine", "Bovine mastitis", "Facility and equipment hygiene"],
+        text: "For cleaning routines in animal production environments.",
+        bullets: [
+          "Facility cleaning",
+          "Equipment and surface hygiene",
+          "Support for handling routines and good practice",
+          "Use according to technical guidance",
+        ],
       },
     ],
+    disclaimer:
+      "The descriptions above refer to the product's intended use. SteriClean holds no registration as a sanitizing agent with antimicrobial action and is not presented as a sanitizer, disinfectant or replacement for any registered crop protection product.",
   },
   sustainability: {
-    eyebrow: "Sustainability",
-    title: "Efficiency without environmental debt",
-    lead: "Compared with a conventional chemical program, SteriClean changes the equation.",
+    eyebrow: "Good practice",
+    title: "Simple inputs, guided use",
+    lead:
+      "What can be stated about the product today: its origin, its manufacturing process and how it is used.",
     items: [
-      { title: "No chemical residue", text: "Water-based product: nothing left behind on fruit or soil." },
-      { title: "No resistance", text: "A physical mode of action selects no resistant populations." },
-      { title: "No waiting period", text: "Compatible with immediate harvest and processing." },
-      { title: "Less waste", text: "Longer shelf life cuts food loss across the chain." },
+      {
+        title: "Water and salt",
+        text: "Obtained from water and salt through an electrochemical process.",
+      },
+      {
+        title: "No solvent added",
+        text: "Aqueous formulation, with no solvents added to the solution.",
+      },
+      {
+        title: "Defined use",
+        text: "Dilution, application, storage and shelf life set out in the technical data sheet.",
+      },
+      {
+        title: "Made in Brazil",
+        text: "Manufactured in Paraná, at the facility inside Biopark, in Toledo.",
+      },
     ],
   },
   contact: {
@@ -677,7 +810,12 @@ const en: Dict = {
       { label: "Plant", value: "Biopark — Toledo / PR" },
     ],
   },
-  footer: { rights: "All rights reserved.", partners: "Partners" },
+  footer: {
+    rights: "All rights reserved.",
+    partners: "Partners",
+    disclaimer:
+      "SteriClean is an agricultural adjuvant, produced from water and salt through an electrolysis process, developed in partnership with Ferticerto. Accreditation with Brazil's MAPA is in progress. This site does not attribute to the product any registration, validation or approval by a public body, nor any biocidal, sanitizing or disinfectant efficacy claim.",
+  },
 };
 
 export const translations: Record<Lang, Dict> = { pt, es, en };
