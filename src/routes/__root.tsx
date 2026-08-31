@@ -106,8 +106,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      // O .ico carrega arte própria em 16px (só o "SC", sem as ondas), que
-      // viram ruído nesse tamanho. Os demais tamanhos usam a marca completa.
+      // O ícone usa a gota + "SC" sem as ondas, encostando nas bordas do
+      // quadrado: as ondas viram ruído em tamanho pequeno e a margem só
+      // encolhia a marca na aba. Mesma arte em todos os tamanhos.
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", href: "/favicon.png", type: "image/png", sizes: "512x512" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
