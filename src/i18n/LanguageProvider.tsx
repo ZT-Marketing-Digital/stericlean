@@ -26,8 +26,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    document.documentElement.lang =
-      lang === "pt" ? "pt-BR" : lang === "es" ? "es" : "en";
+    document.documentElement.lang = lang === "pt" ? "pt-BR" : lang === "es" ? "es" : "en";
   }, [lang]);
 
   const setLang = (l: Lang) => {

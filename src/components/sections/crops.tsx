@@ -26,12 +26,8 @@ export function Crops() {
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">
             {t.crops.eyebrow}
           </span>
-          <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
-            {t.crops.title}
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            {t.crops.lead}
-          </p>
+          <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">{t.crops.title}</h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{t.crops.lead}</p>
         </div>
 
         <div className="mt-10 flex flex-wrap gap-2">
@@ -70,9 +66,7 @@ export function Crops() {
                   <dt className="text-xs font-semibold uppercase tracking-widest text-primary">
                     {row.label}
                   </dt>
-                  <dd className="mt-1.5 text-sm leading-relaxed text-foreground/85">
-                    {row.value}
-                  </dd>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-foreground/85">{row.value}</dd>
                 </div>
               ))}
             </dl>

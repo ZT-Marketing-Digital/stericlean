@@ -11,6 +11,8 @@ export function Hero() {
         src={heroImg}
         alt=""
         aria-hidden="true"
+        fetchPriority="high"
+        decoding="async"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-[linear-gradient(100deg,color-mix(in_oklab,var(--ink)_92%,transparent)_18%,color-mix(in_oklab,var(--ink)_62%,transparent)_62%,color-mix(in_oklab,var(--brand-deep)_45%,transparent)_100%)]" />
@@ -24,10 +26,8 @@ export function Hero() {
             {t.hero.eyebrow}
           </span>
 
-
           <h1 className="mt-6 text-4xl font-bold leading-[1.05] text-primary-foreground sm:text-5xl md:text-6xl">
-            {t.hero.title}{" "}
-            <span className="text-accent">{t.hero.highlight}</span>
+            {t.hero.title} <span className="text-accent">{t.hero.highlight}</span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-primary-foreground/80 md:text-lg">
@@ -56,12 +56,8 @@ export function Hero() {
               key={s.label}
               className="bg-[color-mix(in_oklab,var(--ink)_78%,transparent)] px-6 py-7 backdrop-blur-sm"
             >
-              <dt className="stat-figure text-3xl text-accent md:text-4xl">
-                {s.value}
-              </dt>
-              <dd className="mt-2 text-sm leading-snug text-primary-foreground/70">
-                {s.label}
-              </dd>
+              <dt className="stat-figure text-3xl text-accent md:text-4xl">{s.value}</dt>
+              <dd className="mt-2 text-sm leading-snug text-primary-foreground/70">{s.label}</dd>
             </div>
           ))}
         </dl>

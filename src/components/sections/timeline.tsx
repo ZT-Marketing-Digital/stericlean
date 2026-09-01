@@ -15,12 +15,8 @@ export function Timeline() {
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">
             {t.timeline.eyebrow}
           </span>
-          <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
-            {t.timeline.title}
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            {t.timeline.lead}
-          </p>
+          <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">{t.timeline.title}</h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{t.timeline.lead}</p>
         </div>
 
         <ol className="mt-14 grid gap-6 md:grid-cols-3">
@@ -38,9 +34,7 @@ export function Timeline() {
               <div className="p-6">
                 <span className="stat-figure text-2xl text-primary">{item.year}</span>
                 <h3 className="mt-3 font-display text-lg font-semibold">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {item.text}
-                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
               </div>
             </li>
           ))}

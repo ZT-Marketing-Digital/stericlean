@@ -7,14 +7,7 @@ export const LANGS: { code: Lang; label: string; flag: string }[] = [
 ];
 
 export type CropKey =
-  | "maca"
-  | "tomate"
-  | "uva"
-  | "morango"
-  | "citros"
-  | "manga"
-  | "cevada"
-  | "trigo";
+  "maca" | "tomate" | "uva" | "morango" | "citros" | "manga" | "cevada" | "trigo";
 
 export type Crop = {
   key: CropKey;
@@ -85,13 +78,28 @@ export type Dict = {
     lead: string;
     name: string;
     company: string;
+    email: string;
+    phone: string;
+    phoneOptional: string;
     crop: string;
     message: string;
     submit: string;
     success: string;
     units: { label: string; value: string }[];
   };
-  footer: { rights: string; partners: string; disclaimer: string };
+  footer: {
+    tagline: string;
+    navTitle: string;
+    linesTitle: string;
+    cropsLabel: string;
+    unitsTitle: string;
+    contactTitle: string;
+    contactCta: string;
+    partners: string;
+    rights: string;
+    badge: string;
+    disclaimer: string;
+  };
 };
 
 const pt: Dict = {
@@ -127,14 +135,12 @@ const pt: Dict = {
   mechanism: {
     eyebrow: "A tecnologia",
     title: "Água eletrolisada, obtida de água e sal",
-    lead:
-      "A solução do SteriClean é produzida por eletrólise: uma corrente elétrica aplicada a uma solução de água e sal transforma esses insumos em um líquido pronto para diluição e uso, sem adição de solventes.",
+    lead: "A solução do SteriClean é produzida por eletrólise: uma corrente elétrica aplicada a uma solução de água e sal transforma esses insumos em um líquido pronto para diluição e uso, sem adição de solventes.",
     punch: "Água e sal, transformados por corrente elétrica.",
     figureTitle: "Eletrólise — corrente elétrica aplicada à solução",
     figureCaption:
       "Imagem ilustrativa do processo. É a corrente elétrica aplicada à solução de água e sal que transforma esses insumos no líquido fornecido. Consulte a ficha técnica para diluição, modo de uso, armazenamento e validade.",
-    body:
-      "Esta página descreve o processo de obtenção do produto e o seu uso pretendido. Ela não atribui ao SteriClean registro, validação ou aprovação por órgão público, nem alegação de eficácia biocida, sanitizante ou desinfetante.",
+    body: "Esta página descreve o processo de obtenção do produto e o seu uso pretendido. Ela não atribui ao SteriClean registro, validação ou aprovação por órgão público, nem alegação de eficácia biocida, sanitizante ou desinfetante.",
     cards: [
       {
         title: "Base água",
@@ -175,14 +181,12 @@ const pt: Dict = {
         text: "Inauguração da unidade em 31/03/2026, dentro do parque de inovação.",
       },
     ],
-    note:
-      "Os marcos acima referem-se ao projeto industrial e à presença da empresa no estado. Não constituem validação, aprovação ou chancela do produto por órgão público.",
+    note: "Os marcos acima referem-se ao projeto industrial e à presença da empresa no estado. Não constituem validação, aprovação ou chancela do produto por órgão público.",
   },
   crops: {
     eyebrow: "Aplicação",
     title: "Culturas e contextos de uso",
-    lead:
-      "Onde o SteriClean é aplicado e em que etapa do processo, sempre conforme a orientação técnica definida para cada cultura.",
+    lead: "Onde o SteriClean é aplicado e em que etapa do processo, sempre conforme a orientação técnica definida para cada cultura.",
     labels: {
       application: "Modo de uso",
       environment: "Ambiente",
@@ -210,8 +214,7 @@ const pt: Dict = {
         key: "uva",
         name: "Uva / Videira",
         stage: "Campo",
-        application:
-          "Aplicação no parreiral ao longo do ciclo, conforme a orientação técnica.",
+        application: "Aplicação no parreiral ao longo do ciclo, conforme a orientação técnica.",
         environment: "Parreirais comerciais.",
         note: "Uso como adjuvante, sem substituição do programa fitossanitário do produtor.",
       },
@@ -219,8 +222,7 @@ const pt: Dict = {
         key: "morango",
         name: "Morango",
         stage: "Pós-colheita",
-        application:
-          "Aplicação em pós-colheita, antes do acondicionamento em bandejas.",
+        application: "Aplicação em pós-colheita, antes do acondicionamento em bandejas.",
         environment: "Pós-colheita, em condição comercial.",
         note: "Uso integrado às boas práticas de higienização e conservação.",
       },
@@ -237,8 +239,7 @@ const pt: Dict = {
         key: "manga",
         name: "Manga",
         stage: "Beneficiamento",
-        application:
-          "Aplicação na linha de beneficiamento, na etapa de lavagem dos frutos.",
+        application: "Aplicação na linha de beneficiamento, na etapa de lavagem dos frutos.",
         environment: "Packing house — esteira de processamento.",
         note: "Uso integrado às rotinas de limpeza da linha de processamento.",
       },
@@ -291,8 +292,7 @@ const pt: Dict = {
   sustainability: {
     eyebrow: "Boas práticas",
     title: "Insumos simples, uso orientado",
-    lead:
-      "O que se pode afirmar hoje sobre o produto: a sua origem, o seu processo de fabricação e o seu modo de uso.",
+    lead: "O que se pode afirmar hoje sobre o produto: a sua origem, o seu processo de fabricação e o seu modo de uso.",
     items: [
       {
         title: "Água e sal",
@@ -318,6 +318,9 @@ const pt: Dict = {
     lead: "Conte a sua cultura e o seu desafio — retornamos com um protocolo de aplicação.",
     name: "Nome",
     company: "Empresa",
+    email: "E-mail",
+    phone: "Telefone",
+    phoneOptional: "opcional",
     crop: "Cultura / segmento",
     message: "Mensagem",
     submit: "Enviar mensagem",
@@ -329,8 +332,17 @@ const pt: Dict = {
     ],
   },
   footer: {
-    rights: "Todos os direitos reservados.",
+    tagline:
+      "Adjuvante para uso agrícola, produzido a partir de água e sal por processo de eletrólise.",
+    navTitle: "Navegação",
+    linesTitle: "Linhas",
+    cropsLabel: "Culturas atendidas",
+    unitsTitle: "Unidades",
+    contactTitle: "Fale conosco",
+    contactCta: "Falar com um especialista",
     partners: "Parceiros",
+    rights: "Todos os direitos reservados.",
+    badge: "Credenciamento MAPA em andamento",
     disclaimer:
       "SteriClean é um adjuvante para uso agrícola, produzido a partir de água e sal por processo de eletrólise, desenvolvido em parceria com a Ferticerto. O credenciamento junto ao MAPA está em andamento. Este site não atribui ao produto registro, validação ou aprovação por órgão público, nem alegação de eficácia biocida, sanitizante ou desinfetante.",
   },
@@ -369,14 +381,12 @@ const es: Dict = {
   mechanism: {
     eyebrow: "La tecnología",
     title: "Agua electrolizada, obtenida de agua y sal",
-    lead:
-      "La solución de SteriClean se produce por electrólisis: una corriente eléctrica aplicada a una solución de agua y sal transforma esos insumos en un líquido listo para diluir y usar, sin agregado de solventes.",
+    lead: "La solución de SteriClean se produce por electrólisis: una corriente eléctrica aplicada a una solución de agua y sal transforma esos insumos en un líquido listo para diluir y usar, sin agregado de solventes.",
     punch: "Agua y sal, transformados por corriente eléctrica.",
     figureTitle: "Electrólisis — corriente eléctrica aplicada a la solución",
     figureCaption:
       "Imagen ilustrativa del proceso. Es la corriente eléctrica aplicada a la solución de agua y sal la que transforma esos insumos en el líquido suministrado. Consulte la ficha técnica para dilución, modo de uso, almacenamiento y vencimiento.",
-    body:
-      "Esta página describe el proceso de obtención del producto y su uso previsto. No le atribuye registro, validación ni aprobación por parte de organismos públicos, ni alegación de eficacia biocida, sanitizante o desinfectante.",
+    body: "Esta página describe el proceso de obtención del producto y su uso previsto. No le atribuye registro, validación ni aprobación por parte de organismos públicos, ni alegación de eficacia biocida, sanitizante o desinfectante.",
     cards: [
       {
         title: "Base agua",
@@ -417,14 +427,12 @@ const es: Dict = {
         text: "Inauguración de la unidad el 31/03/2026, dentro del parque de innovación.",
       },
     ],
-    note:
-      "Los hitos anteriores se refieren al proyecto industrial y a la presencia de la empresa en el estado. No constituyen validación, aprobación ni aval del producto por parte de organismos públicos.",
+    note: "Los hitos anteriores se refieren al proyecto industrial y a la presencia de la empresa en el estado. No constituyen validación, aprobación ni aval del producto por parte de organismos públicos.",
   },
   crops: {
     eyebrow: "Aplicación",
     title: "Cultivos y contextos de uso",
-    lead:
-      "Dónde se aplica SteriClean y en qué etapa del proceso, siempre según la orientación técnica definida para cada cultivo.",
+    lead: "Dónde se aplica SteriClean y en qué etapa del proceso, siempre según la orientación técnica definida para cada cultivo.",
     labels: {
       application: "Modo de uso",
       environment: "Ambiente",
@@ -452,8 +460,7 @@ const es: Dict = {
         key: "uva",
         name: "Uva / Vid",
         stage: "Campo",
-        application:
-          "Aplicación en el viñedo a lo largo del ciclo, según la orientación técnica.",
+        application: "Aplicación en el viñedo a lo largo del ciclo, según la orientación técnica.",
         environment: "Viñedos comerciales.",
         note: "Uso como adyuvante, sin sustituir el programa fitosanitario del productor.",
       },
@@ -461,8 +468,7 @@ const es: Dict = {
         key: "morango",
         name: "Frutilla",
         stage: "Poscosecha",
-        application:
-          "Aplicación en poscosecha, antes del acondicionamiento en bandejas.",
+        application: "Aplicación en poscosecha, antes del acondicionamiento en bandejas.",
         environment: "Poscosecha, en condición comercial.",
         note: "Uso integrado a las buenas prácticas de higienización y conservación.",
       },
@@ -479,8 +485,7 @@ const es: Dict = {
         key: "manga",
         name: "Mango",
         stage: "Empaque",
-        application:
-          "Aplicación en la línea de empaque, en la etapa de lavado de los frutos.",
+        application: "Aplicación en la línea de empaque, en la etapa de lavado de los frutos.",
         environment: "Packing house — cinta de procesamiento.",
         note: "Uso integrado a las rutinas de limpieza de la línea de procesamiento.",
       },
@@ -533,8 +538,7 @@ const es: Dict = {
   sustainability: {
     eyebrow: "Buenas prácticas",
     title: "Insumos simples, uso orientado",
-    lead:
-      "Lo que se puede afirmar hoy sobre el producto: su origen, su proceso de fabricación y su modo de uso.",
+    lead: "Lo que se puede afirmar hoy sobre el producto: su origen, su proceso de fabricación y su modo de uso.",
     items: [
       {
         title: "Agua y sal",
@@ -560,6 +564,9 @@ const es: Dict = {
     lead: "Cuéntenos su cultivo y su desafío: respondemos con un protocolo de aplicación.",
     name: "Nombre",
     company: "Empresa",
+    email: "Correo electrónico",
+    phone: "Teléfono",
+    phoneOptional: "opcional",
     crop: "Cultivo / segmento",
     message: "Mensaje",
     submit: "Enviar mensaje",
@@ -571,8 +578,17 @@ const es: Dict = {
     ],
   },
   footer: {
-    rights: "Todos los derechos reservados.",
+    tagline:
+      "Adyuvante de uso agrícola, producido a partir de agua y sal mediante un proceso de electrólisis.",
+    navTitle: "Navegación",
+    linesTitle: "Líneas",
+    cropsLabel: "Cultivos atendidos",
+    unitsTitle: "Unidades",
+    contactTitle: "Contáctenos",
+    contactCta: "Hablar con un especialista",
     partners: "Socios",
+    rights: "Todos los derechos reservados.",
+    badge: "Habilitación MAPA en trámite",
     disclaimer:
       "SteriClean es un adyuvante de uso agrícola, producido a partir de agua y sal mediante un proceso de electrólisis, desarrollado en alianza con Ferticerto. La habilitación ante el MAPA está en trámite. Este sitio no le atribuye al producto registro, validación ni aprobación por parte de organismos públicos, ni alegación de eficacia biocida, sanitizante o desinfectante.",
   },
@@ -611,14 +627,12 @@ const en: Dict = {
   mechanism: {
     eyebrow: "The technology",
     title: "Electrolyzed water, obtained from water and salt",
-    lead:
-      "SteriClean's solution is produced by electrolysis: an electric current applied to a water-and-salt solution turns those inputs into a liquid ready for dilution and use, with no solvents added.",
+    lead: "SteriClean's solution is produced by electrolysis: an electric current applied to a water-and-salt solution turns those inputs into a liquid ready for dilution and use, with no solvents added.",
     punch: "Water and salt, transformed by electric current.",
     figureTitle: "Electrolysis — electric current applied to the solution",
     figureCaption:
       "Illustrative image of the process. It is the electric current applied to the water-and-salt solution that turns those inputs into the liquid supplied. See the technical data sheet for dilution, use, storage and shelf life.",
-    body:
-      "This page describes how the product is obtained and its intended use. It does not attribute to SteriClean any registration, validation or approval by a public body, nor any biocidal, sanitizing or disinfectant efficacy claim.",
+    body: "This page describes how the product is obtained and its intended use. It does not attribute to SteriClean any registration, validation or approval by a public body, nor any biocidal, sanitizing or disinfectant efficacy claim.",
     cards: [
       {
         title: "Water-based",
@@ -659,14 +673,12 @@ const en: Dict = {
         text: "Facility inaugurated on 03/31/2026 inside the innovation park.",
       },
     ],
-    note:
-      "The milestones above refer to the industrial project and the company's presence in the state. They do not constitute validation, approval or endorsement of the product by any public body.",
+    note: "The milestones above refer to the industrial project and the company's presence in the state. They do not constitute validation, approval or endorsement of the product by any public body.",
   },
   crops: {
     eyebrow: "Application",
     title: "Crops and use contexts",
-    lead:
-      "Where SteriClean is applied and at which stage of the process, always according to the technical guidance defined for each crop.",
+    lead: "Where SteriClean is applied and at which stage of the process, always according to the technical guidance defined for each crop.",
     labels: {
       application: "How it is used",
       environment: "Setting",
@@ -694,8 +706,7 @@ const en: Dict = {
         key: "uva",
         name: "Grape / Vine",
         stage: "Field",
-        application:
-          "Applied in the vineyard through the cycle, according to technical guidance.",
+        application: "Applied in the vineyard through the cycle, according to technical guidance.",
         environment: "Commercial vineyards.",
         note: "Used as an adjuvant, without replacing the grower's crop protection program.",
       },
@@ -773,8 +784,7 @@ const en: Dict = {
   sustainability: {
     eyebrow: "Good practice",
     title: "Simple inputs, guided use",
-    lead:
-      "What can be stated about the product today: its origin, its manufacturing process and how it is used.",
+    lead: "What can be stated about the product today: its origin, its manufacturing process and how it is used.",
     items: [
       {
         title: "Water and salt",
@@ -800,6 +810,9 @@ const en: Dict = {
     lead: "Tell us your crop and your challenge — we'll come back with an application protocol.",
     name: "Name",
     company: "Company",
+    email: "Email",
+    phone: "Phone",
+    phoneOptional: "optional",
     crop: "Crop / segment",
     message: "Message",
     submit: "Send message",
@@ -811,8 +824,16 @@ const en: Dict = {
     ],
   },
   footer: {
-    rights: "All rights reserved.",
+    tagline: "Agricultural adjuvant, produced from water and salt through an electrolysis process.",
+    navTitle: "Navigation",
+    linesTitle: "Product lines",
+    cropsLabel: "Crops covered",
+    unitsTitle: "Locations",
+    contactTitle: "Get in touch",
+    contactCta: "Talk to a specialist",
     partners: "Partners",
+    rights: "All rights reserved.",
+    badge: "MAPA accreditation in progress",
     disclaimer:
       "SteriClean is an agricultural adjuvant, produced from water and salt through an electrolysis process, developed in partnership with Ferticerto. Accreditation with Brazil's MAPA is in progress. This site does not attribute to the product any registration, validation or approval by a public body, nor any biocidal, sanitizing or disinfectant efficacy claim.",
   },

@@ -21,7 +21,6 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const current = LANG_OPTIONS.find((l) => l.code === lang) ?? LANG_OPTIONS[0]!;
 
-
   const links = [
     { href: "#mecanismo", label: t.nav.mechanism },
     { href: "#culturas", label: t.nav.results },
@@ -36,7 +35,7 @@ export function SiteHeader() {
           <Wordmark />
         </a>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav aria-label={t.footer.navTitle} className="hidden items-center gap-7 lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
@@ -51,9 +50,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-              <span className="text-[10px] font-bold uppercase text-primary">
-                {current.region}
-              </span>
+              <span className="text-[10px] font-bold uppercase text-primary">{current.region}</span>
               <span>{current.short}</span>
               <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
             </DropdownMenuTrigger>
@@ -75,7 +72,6 @@ export function SiteHeader() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-
           <a
             href="#contato"
             className="hidden rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:inline-flex"
@@ -87,6 +83,8 @@ export function SiteHeader() {
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
+            aria-expanded={open}
+            aria-controls="menu-mobile"
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
@@ -94,7 +92,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <nav className="border-t border-border bg-background lg:hidden">
+        <nav id="menu-mobile" className="border-t border-border bg-background lg:hidden">
           <div className="section-shell flex flex-col py-3">
             {[...links, { href: "#contato", label: t.nav.contact }].map((l) => (
               <a

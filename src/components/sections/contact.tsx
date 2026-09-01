@@ -7,6 +7,10 @@ export function Contact() {
   const { t } = useLanguage();
   const [sent, setSent] = useState(false);
 
+  // TODO(deploy): este formulário ainda não envia nada — os dados são
+  // descartados no submit. Antes de publicar, ligar a um endpoint
+  // (Lovable Cloud, Formspree, Resend, worker do Cloudflare) ou trocar
+  // por um link de e-mail/WhatsApp real.
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSent(true);
@@ -24,12 +28,8 @@ export function Contact() {
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">
             {t.contact.eyebrow}
           </span>
-          <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
-            {t.contact.title}
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            {t.contact.lead}
-          </p>
+          <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">{t.contact.title}</h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{t.contact.lead}</p>
 
           <ul className="mt-10 space-y-5">
             {t.contact.units.map((u) => (
@@ -46,18 +46,37 @@ export function Contact() {
           </ul>
         </div>
 
-        <form
-          onSubmit={onSubmit}
-          className="rounded-3xl border border-border bg-card p-6 md:p-8"
-        >
+        <form onSubmit={onSubmit} className="rounded-3xl border border-border bg-card p-6 md:p-8">
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="block">
               <span className="mb-1.5 block text-sm font-medium">{t.contact.name}</span>
-              <input required name="name" className={field} />
+              <input required name="name" autoComplete="name" className={field} />
             </label>
             <label className="block">
               <span className="mb-1.5 block text-sm font-medium">{t.contact.company}</span>
-              <input name="company" className={field} />
+              <input name="company" autoComplete="organization" className={field} />
+            </label>
+          </div>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            <label className="block">
+              <span className="mb-1.5 block text-sm font-medium">{t.contact.email}</span>
+              <input
+                required
+                type="email"
+                name="email"
+                autoComplete="email"
+                inputMode="email"
+                className={field}
+              />
+            </label>
+            <label className="block">
+              <span className="mb-1.5 block text-sm font-medium">
+                {t.contact.phone}{" "}
+                <span className="font-normal text-muted-foreground">
+                  ({t.contact.phoneOptional})
+                </span>
+              </span>
+              <input type="tel" name="phone" autoComplete="tel" inputMode="tel" className={field} />
             </label>
           </div>
           <label className="mt-4 block">
@@ -76,9 +95,7 @@ export function Contact() {
             {t.contact.submit}
           </button>
 
-          {sent && (
-            <p className="mt-4 text-center text-sm text-primary">{t.contact.success}</p>
-          )}
+          {sent && <p className="mt-4 text-center text-sm text-primary">{t.contact.success}</p>}
         </form>
       </div>
     </section>

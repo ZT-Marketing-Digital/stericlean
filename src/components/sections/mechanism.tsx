@@ -29,7 +29,6 @@ export function Mechanism() {
           </div>
 
           <div className="relative">
-            
             <figure className="mt-5 overflow-hidden rounded-2xl border border-border bg-card">
               <div className="flex aspect-4/3 items-center justify-center bg-white p-10">
                 <img
@@ -58,9 +57,7 @@ export function Mechanism() {
               className="rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-[0_18px_40px_-28px_color-mix(in_oklab,var(--brand-deep)_60%,transparent)]"
             >
               <h3 className="font-display text-base font-semibold">{c.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {c.text}
-              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
             </div>
           ))}
         </div>

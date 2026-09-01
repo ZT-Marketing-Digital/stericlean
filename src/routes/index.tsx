@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { LanguageProvider, useLanguage } from "@/i18n/LanguageProvider";
 import { SiteHeader } from "@/components/site-header";
@@ -9,40 +10,40 @@ import { ProductLines } from "@/components/sections/product-lines";
 import { Sustainability } from "@/components/sections/sustainability";
 import { Contact } from "@/components/sections/contact";
 import { SiteFooter } from "@/components/sections/site-footer";
-import { translations } from "@/i18n/translations";
-
-const meta = translations.pt.meta;
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: meta.title },
-      { name: "description", content: meta.description },
-      { property: "og:title", content: meta.title },
-      { property: "og:description", content: meta.description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
   component: Index,
 });
 
-function PageMeta() {
+/**
+ * O SSR já entrega o <head> em pt-BR (ver __root.tsx). Aqui só reagimos à
+ * troca de idioma no cliente, sem duplicar as tags no HTML servido.
+ */
+function usePageMeta() {
   const { t } = useLanguage();
-  return (
-    <>
-      <title>{t.meta.title}</title>
-      <meta name="description" content={t.meta.description} />
-    </>
-  );
+
+  useEffect(() => {
+    document.title = t.meta.title;
+    for (const sel of ['meta[name="description"]', 'meta[property="og:description"]']) {
+      document.querySelector(sel)?.setAttribute("content", t.meta.description);
+    }
+    document.querySelector('meta[property="og:title"]')?.setAttribute("content", t.meta.title);
+  }, [t]);
 }
 
-function Index() {
+function Page() {
+  usePageMeta();
+
   return (
-    <LanguageProvider>
-      <PageMeta />
+    <>
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground"
+      >
+        Ir para o conteúdo
+      </a>
       <SiteHeader />
-      <main>
+      <main id="conteudo">
         <Hero />
         <Mechanism />
         <Timeline />
@@ -52,6 +53,14 @@ function Index() {
         <Contact />
       </main>
       <SiteFooter />
+    </>
+  );
+}
+
+function Index() {
+  return (
+    <LanguageProvider>
+      <Page />
     </LanguageProvider>
   );
 }

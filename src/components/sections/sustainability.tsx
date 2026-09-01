@@ -29,12 +29,8 @@ export function Sustainability() {
               key={item.title}
               className="bg-[color-mix(in_oklab,var(--ink)_72%,transparent)] p-7"
             >
-              <h3 className="font-display text-lg font-semibold text-accent">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-primary-foreground/75">
-                {item.text}
-              </p>
+              <h3 className="font-display text-lg font-semibold text-accent">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-primary-foreground/75">{item.text}</p>
             </div>
           ))}
         </div>

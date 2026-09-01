@@ -13,19 +13,14 @@ export function ProductLines() {
           <span className="text-xs font-semibold uppercase tracking-widest text-primary">
             {t.lines.eyebrow}
           </span>
-          <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
-            {t.lines.title}
-          </h2>
+          <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">{t.lines.title}</h2>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {t.lines.items.map((item, i) => {
             const Icon = icons[i] ?? Leaf;
             return (
-              <article
-                key={item.name}
-                className="rounded-3xl border border-border bg-card p-8"
-              >
+              <article key={item.name} className="rounded-3xl border border-border bg-card p-8">
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/20 text-primary">
                   <Icon className="h-6 w-6" />
                 </span>
