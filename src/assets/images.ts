@@ -14,3 +14,6 @@ export const morango_bandeja_jpg = "/images/morango_bandeja.jpg";
 export const placas_penicillium_placas_jpg = "/images/placas_penicillium_placas.jpg";
 export const produto_embalagem_25L_png = "/images/produto_embalagem_25L.png";
 export const mapa_brasil_pr_jpg = "/images/mapa_brasil_pr.jpg";
+export const maca_pomar_jpg = "/images/maca_pomar.jpg";
+export const tomate_cultivo_jpg = "/images/tomate_cultivo.jpg";
+export const uva_parreiral_jpg = "/images/uva_parreiral.jpg";

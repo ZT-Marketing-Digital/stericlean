@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import type { CropKey } from "@/i18n/translations";
-import { manga_caixa_jpg as mangaCaixa } from "@/assets/images";
 import { manga_esteira_jpg as mangaEsteira } from "@/assets/images";
 import { morango_bandeja_jpg as morangoBandeja } from "@/assets/images";
 import { cevada_mao_jpg as cevadaMao } from "@/assets/images";
 import { cevada_brotos_jpg as cevadaBrotos } from "@/assets/images";
+import { maca_pomar_jpg as macaPomar } from "@/assets/images";
+import { tomate_cultivo_jpg as tomateCultivo } from "@/assets/images";
+import { uva_parreiral_jpg as uvaParreiral } from "@/assets/images";
 
 const cropPhotos: Partial<Record<CropKey, string[]>> = {
-  manga: [mangaEsteira, mangaCaixa],
+  maca: [macaPomar],
+  tomate: [tomateCultivo],
+  uva: [uvaParreiral],
+  manga: [mangaEsteira],
   morango: [morangoBandeja],
   cevada: [cevadaMao, cevadaBrotos],
 };
