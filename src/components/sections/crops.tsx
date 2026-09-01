@@ -7,14 +7,18 @@ import { cevada_mao_jpg as cevadaMao } from "@/assets/images";
 import { maca_pomar_jpg as macaPomar } from "@/assets/images";
 import { tomate_cultivo_jpg as tomateCultivo } from "@/assets/images";
 import { uva_parreiral_jpg as uvaParreiral } from "@/assets/images";
+import { citros_pomar_jpg as citrosPomar } from "@/assets/images";
+import { trigo_espiga_jpg as trigoEspiga } from "@/assets/images";
 
 const cropPhotos: Partial<Record<CropKey, string[]>> = {
   maca: [macaPomar],
   tomate: [tomateCultivo],
   uva: [uvaParreiral],
+  citros: [citrosPomar],
   manga: [mangaEsteira],
   morango: [morangoBandeja],
   cevada: [cevadaMao],
+  trigo: [trigoEspiga],
 };
 
 export function Crops() {
