@@ -8,6 +8,7 @@ import { Timeline } from "@/components/sections/timeline";
 import { Crops } from "@/components/sections/crops";
 import { ProductLines } from "@/components/sections/product-lines";
 import { Sustainability } from "@/components/sections/sustainability";
+import { Location } from "@/components/sections/location";
 import { Contact } from "@/components/sections/contact";
 import { SiteFooter } from "@/components/sections/site-footer";
 
@@ -50,6 +51,7 @@ function Page() {
         <Crops />
         <ProductLines />
         <Sustainability />
+        <Location />
         <Contact />
       </main>
       <SiteFooter />

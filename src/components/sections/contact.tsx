@@ -1,6 +1,5 @@
 import { useState, type FormEvent } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { MapPin } from "lucide-react";
 import { toast } from "sonner";
 
 export function Contact() {
@@ -30,20 +29,6 @@ export function Contact() {
           </span>
           <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">{t.contact.title}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">{t.contact.lead}</p>
-
-          <ul className="mt-10 space-y-5">
-            {t.contact.units.map((u) => (
-              <li key={u.label} className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    {u.label}
-                  </p>
-                  <p className="font-display text-base font-semibold">{u.value}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <form onSubmit={onSubmit} className="rounded-3xl border border-border bg-card p-6 md:p-8">

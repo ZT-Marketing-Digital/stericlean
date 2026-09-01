@@ -72,6 +72,21 @@ export type Dict = {
     lead: string;
     items: { title: string; text: string }[];
   };
+  location: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    addressLabel: string;
+    address: string;
+    cityLabel: string;
+    city: string;
+    parkLabel: string;
+    park: string;
+    ctaRoute: string;
+    ctaMaps: string;
+    mapCta: string;
+    mapNote: string;
+  };
   contact: {
     eyebrow: string;
     title: string;
@@ -90,7 +105,6 @@ export type Dict = {
   footer: {
     tagline: string;
     navTitle: string;
-    linesTitle: string;
     cropsLabel: string;
     unitsTitle: string;
     contactTitle: string;
@@ -245,10 +259,10 @@ const pt: Dict = {
       },
       {
         key: "cevada",
-        name: "Cevada",
+        name: "Grãos",
         stage: "Pós-colheita",
-        application: "Tratamento do grão nas etapas entre a lavoura e a maltaria.",
-        environment: "Cadeia maltadora no Paraná.",
+        application: "Tratamento do grão nas etapas entre a lavoura e o beneficiamento.",
+        environment: "Armazenagem e beneficiamento no Paraná.",
         note: "Uso integrado às rotinas de manejo e armazenagem do grão.",
       },
       {
@@ -312,6 +326,21 @@ const pt: Dict = {
       },
     ],
   },
+  location: {
+    eyebrow: "Localização",
+    title: "A fábrica fica no Biopark, em Toledo",
+    lead: "A produção nacional do SteriClean acontece dentro do parque de inovação do Biopark, no oeste do Paraná.",
+    addressLabel: "Endereço",
+    address: "Rua dos Manacás-da-Serra, 354",
+    cityLabel: "Cidade",
+    city: "Toledo / PR — CEP 85920-268",
+    parkLabel: "Local",
+    park: "Biopark — parque de inovação",
+    ctaRoute: "Como chegar",
+    ctaMaps: "Abrir no Google Maps",
+    mapCta: "Ver mapa",
+    mapNote: "O mapa é carregado pelo Google ao clicar.",
+  },
   contact: {
     eyebrow: "Contato",
     title: "Fale com um especialista",
@@ -325,17 +354,12 @@ const pt: Dict = {
     message: "Mensagem",
     submit: "Enviar mensagem",
     success: "Mensagem registrada. Entraremos em contato em breve.",
-    units: [
-      { label: "Unidade de tecnologia", value: "Tijucas / SC" },
-      { label: "Comercial", value: "Curitiba / PR" },
-      { label: "Fábrica", value: "Biopark — Toledo / PR" },
-    ],
+    units: [{ label: "Fábrica", value: "Biopark — Toledo / PR" }],
   },
   footer: {
     tagline:
       "Adjuvante para uso agrícola, produzido a partir de água e sal por processo de eletrólise.",
     navTitle: "Navegação",
-    linesTitle: "Linhas",
     cropsLabel: "Culturas atendidas",
     unitsTitle: "Unidades",
     contactTitle: "Fale conosco",
@@ -491,10 +515,10 @@ const es: Dict = {
       },
       {
         key: "cevada",
-        name: "Cebada",
+        name: "Granos",
         stage: "Poscosecha",
-        application: "Tratamiento del grano en las etapas entre el campo y la maltería.",
-        environment: "Cadena maltera en Paraná.",
+        application: "Tratamiento del grano en las etapas entre el campo y el procesamiento.",
+        environment: "Almacenamiento y procesamiento en Paraná.",
         note: "Uso integrado a las rutinas de manejo y almacenamiento del grano.",
       },
       {
@@ -558,6 +582,21 @@ const es: Dict = {
       },
     ],
   },
+  location: {
+    eyebrow: "Ubicación",
+    title: "La planta está en el Biopark, en Toledo",
+    lead: "La producción nacional de SteriClean ocurre dentro del parque de innovación Biopark, en el oeste de Paraná.",
+    addressLabel: "Dirección",
+    address: "Rua dos Manacás-da-Serra, 354",
+    cityLabel: "Ciudad",
+    city: "Toledo / PR — CEP 85920-268",
+    parkLabel: "Lugar",
+    park: "Biopark — parque de innovación",
+    ctaRoute: "Cómo llegar",
+    ctaMaps: "Abrir en Google Maps",
+    mapCta: "Ver mapa",
+    mapNote: "El mapa lo carga Google al hacer clic.",
+  },
   contact: {
     eyebrow: "Contacto",
     title: "Hable con un especialista",
@@ -571,17 +610,12 @@ const es: Dict = {
     message: "Mensaje",
     submit: "Enviar mensaje",
     success: "Mensaje registrado. Nos pondremos en contacto pronto.",
-    units: [
-      { label: "Unidad de tecnología", value: "Tijucas / SC" },
-      { label: "Comercial", value: "Curitiba / PR" },
-      { label: "Planta", value: "Biopark — Toledo / PR" },
-    ],
+    units: [{ label: "Planta", value: "Biopark — Toledo / PR" }],
   },
   footer: {
     tagline:
       "Adyuvante de uso agrícola, producido a partir de agua y sal mediante un proceso de electrólisis.",
     navTitle: "Navegación",
-    linesTitle: "Líneas",
     cropsLabel: "Cultivos atendidos",
     unitsTitle: "Unidades",
     contactTitle: "Contáctenos",
@@ -737,10 +771,10 @@ const en: Dict = {
       },
       {
         key: "cevada",
-        name: "Barley",
+        name: "Grains",
         stage: "Post-harvest",
-        application: "Grain treatment in the stages between field and maltings.",
-        environment: "Malting chain in Paraná.",
+        application: "Grain treatment in the stages between field and processing.",
+        environment: "Storage and processing in Paraná.",
         note: "Used as part of grain handling and storage routines.",
       },
       {
@@ -804,6 +838,21 @@ const en: Dict = {
       },
     ],
   },
+  location: {
+    eyebrow: "Location",
+    title: "The plant sits inside Biopark, in Toledo",
+    lead: "SteriClean's domestic production runs inside the Biopark innovation park, in western Paraná, Brazil.",
+    addressLabel: "Address",
+    address: "Rua dos Manacás-da-Serra, 354",
+    cityLabel: "City",
+    city: "Toledo / PR — 85920-268, Brazil",
+    parkLabel: "Site",
+    park: "Biopark innovation park",
+    ctaRoute: "Get directions",
+    ctaMaps: "Open in Google Maps",
+    mapCta: "View map",
+    mapNote: "The map is loaded by Google when you click.",
+  },
   contact: {
     eyebrow: "Contact",
     title: "Talk to a specialist",
@@ -817,16 +866,11 @@ const en: Dict = {
     message: "Message",
     submit: "Send message",
     success: "Message received. We'll be in touch shortly.",
-    units: [
-      { label: "Technology unit", value: "Tijucas / SC" },
-      { label: "Sales", value: "Curitiba / PR" },
-      { label: "Plant", value: "Biopark — Toledo / PR" },
-    ],
+    units: [{ label: "Plant", value: "Biopark — Toledo / PR" }],
   },
   footer: {
     tagline: "Agricultural adjuvant, produced from water and salt through an electrolysis process.",
     navTitle: "Navigation",
-    linesTitle: "Product lines",
     cropsLabel: "Crops covered",
     unitsTitle: "Locations",
     contactTitle: "Get in touch",

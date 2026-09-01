@@ -70,21 +70,10 @@ export function SiteFooter() {
             </ul>
           </nav>
 
-          {/* Linhas + culturas */}
+          {/* Culturas atendidas */}
           <div>
-            <p className={colTitle}>{t.footer.linesTitle}</p>
-            <ul className="mt-4 space-y-3">
-              {t.lines.items.map((item) => (
-                <li key={item.name}>
-                  <a href="#linhas" className={link}>
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <p className={`${colTitle} mt-8`}>{t.footer.cropsLabel}</p>
-            <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
+            <p className={colTitle}>{t.footer.cropsLabel}</p>
+            <p className="mt-4 text-sm leading-relaxed text-primary-foreground/70">
               {t.crops.items.map((c) => c.name).join(" · ")}
             </p>
           </div>
