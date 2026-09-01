@@ -23,7 +23,13 @@ jobs:
       - name: 🟢 Configurar Node
         uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          # Precisa ser 24 para bater com o npm que gerou o package-lock.json.
+          # O Node 22 traz npm 10, e npm 10 e npm 11 montam a árvore de
+          # dependências aninhadas de forma diferente — com npm 10 o `npm ci`
+          # morre em "Missing: lru-cache@11.5.2 from lock file", mesmo com o
+          # lock recém-gerado. Se um dia mudar esta versão, regenere o lock
+          # com a mesma versão de npm.
+          node-version: '24'
           cache: 'npm'
 
       - name: 📦 Instalar dependências
