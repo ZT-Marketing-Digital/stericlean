@@ -8,6 +8,15 @@
   RewriteEngine On
   RewriteBase /
 
+  # O site atende em stericleanbrasil.com.br e www.stericleanbrasil.com.br.
+  # Sem este 301 o mesmo conteúdo responde nos dois endereços e o Google
+  # trata como conteúdo duplicado. A forma oficial é a sem www (é o que está
+  # no canonical, no og:url e no sitemap.xml).
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  # %{REQUEST_SCHEME} preserva http/https: enquanto o AutoSSL não estiver
+  # ativo, forçar https aqui quebraria quem chega pelo www.
+  RewriteRule ^ %{REQUEST_SCHEME}://%1%{REQUEST_URI} [L,R=301]
+
   # HTTPS: só ligue depois que o certificado (AutoSSL) estiver ativo no cPanel.
   # Ligar antes disso derruba o site.
   # RewriteCond %{HTTPS} !=on

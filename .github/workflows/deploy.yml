@@ -73,13 +73,13 @@ jobs:
           # Só os arquivos estáticos. .output/server/ NÃO sobe: é o servidor
           # Node usado apenas para pré-renderizar durante o build.
           local-dir: ./.output/public/
-          # A conta de FTP do deploy deve ser criada no cPanel já apontando
-          # para a raiz do site (public_html do domínio), então o login cai lá
-          # dentro e "./" é a raiz.
+          # A conta de FTP do deploy foi criada com o diretório apontando
+          # direto para a raiz do site (/home2/ztdigi26/stericleanbrasil.com.br),
+          # então o login já cai lá dentro e "./" é a raiz do domínio.
           #
           # Se um dia o deploy passar a usar o usuário principal do cPanel,
-          # que entra em /home/<conta>/, troque para:
-          #   server-dir: ./public_html/
+          # que entra em /home2/ztdigi26/, troque para:
+          #   server-dir: ./stericleanbrasil.com.br/
           server-dir: ./
           exclude: |
             **/.git*
@@ -98,4 +98,4 @@ jobs:
       - name: ✅ Concluído
         run: |
           echo "🎉 Deploy concluído!"
-          echo "🌐 https://stericlean.com.br"
+          echo "🌐 https://stericleanbrasil.com.br"

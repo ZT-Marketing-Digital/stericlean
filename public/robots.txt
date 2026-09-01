@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://stericlean.com.br/sitemap.xml
+Sitemap: https://stericleanbrasil.com.br/sitemap.xml
