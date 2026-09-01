@@ -7,6 +7,13 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // O destino é hospedagem compartilhada (cPanel/Apache), que serve arquivos
+  // estáticos e PHP — não roda o servidor Nitro. Fixamos node-server para que
+  // scripts/prerender.mjs consiga levantar o build e salvar o HTML pronto.
+  // (O prerender nativo do TanStack não funciona aqui: ele procura o bundle em
+  // dist/server/server.js, enquanto esta config faz o Nitro gerar .output/.)
+  nitro: { preset: "node-server" },
+
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this

@@ -1,0 +1,67 @@
+# SteriClean — configuração do Apache (cPanel/HostGator).
+# Este arquivo é copiado pelo build para .output/public/ e sobe junto no deploy.
+
+# ---------------------------------------------------------------------------
+# Roteamento
+# ---------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # HTTPS: só ligue depois que o certificado (AutoSSL) estiver ativo no cPanel.
+  # Ligar antes disso derruba o site.
+  # RewriteCond %{HTTPS} !=on
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Arquivos e pastas que existem no disco são servidos direto — inclusive o
+  # /api/ em PHP do formulário, que não pode cair no fallback abaixo.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Qualquer outra rota devolve o index.html e o roteador do app resolve.
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Cache
+# ---------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # Os arquivos em /assets/ têm hash no nome: mudou o conteúdo, mudou a URL.
+  <FilesMatch "\.(js|css|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # O HTML não pode ser cacheado: é ele que aponta para os assets novos.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Compressão
+# ---------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml image/svg+xml
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Diversos
+# ---------------------------------------------------------------------------
+AddDefaultCharset UTF-8
+Options -Indexes
+
+# Não expor o estado do FTP-Deploy-Action nem arquivos de configuração.
+<FilesMatch "^(\.ftp-deploy-sync-state\.json|\.env.*|\.git.*)$">
+  Require all denied
+</FilesMatch>

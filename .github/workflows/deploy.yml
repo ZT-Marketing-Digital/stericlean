@@ -1,0 +1,101 @@
+name: 🚀 Deploy para HostGator
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Um deploy por vez. O FTP-Deploy-Action guarda um arquivo de estado no
+# servidor para saber o que mudou; dois jobs simultâneos corrompem esse
+# controle e o deploy seguinte sobe tudo de novo (ou pior, sobe pela metade).
+concurrency:
+  group: deploy-producao
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v7
+
+      - name: 🟢 Configurar Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: 📦 Instalar dependências
+        # `npm ci` em vez de `npm i`: instala exatamente o que está no
+        # package-lock.json. Build reproduzível e bem mais rápido no CI.
+        run: npm ci
+
+      - name: 🧪 Verificar tipos
+        # Diferente de outros projetos, aqui o `build` é só `vite build` —
+        # o Vite transpila sem checar tipos. Sem esta etapa, um erro de
+        # TypeScript passaria batido e chegaria ao servidor.
+        run: npx tsc --noEmit
+
+      - name: 🔨 Build de produção
+        # `build:static` = `vite build` + `scripts/prerender.mjs`.
+        # O build sozinho gera um servidor SSR em .output/server/, que a
+        # hospedagem compartilhada não sabe executar. O prerender levanta esse
+        # servidor, pede a página e grava .output/public/index.html.
+        run: npm run build:static
+
+      - name: 🔍 Conferir o build
+        run: |
+          OUT=.output/public
+          test -f "$OUT/index.html" || { echo "::error::index.html não foi gerado"; exit 1; }
+          test -f "$OUT/.htaccess" || { echo "::error::.htaccess não foi copiado — o site vai dar 404 fora da raiz"; exit 1; }
+          test -f "$OUT/og-image.jpg" || { echo "::error::og-image.jpg sumiu — link compartilhado fica sem preview"; exit 1; }
+
+          # O HTML precisa chegar renderizado, não como casca vazia.
+          grep -q "Culturas e contextos de uso" "$OUT/index.html" \
+            || { echo "::error::index.html sem o conteúdo da página — o prerender falhou silenciosamente"; exit 1; }
+
+          # Guarda de conformidade: o aviso regulatório exigido pelas diretrizes
+          # de comunicação da Sanfer não pode sumir do ar sem alguém perceber.
+          grep -q "credenciamento junto ao MAPA" "$OUT/index.html" \
+            || { echo "::error::aviso de credenciamento MAPA ausente do HTML"; exit 1; }
+
+          echo "Conteúdo a publicar:"
+          ls -lh "$OUT/"
+          du -sh "$OUT/"
+
+      - name: 📤 Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Só os arquivos estáticos. .output/server/ NÃO sobe: é o servidor
+          # Node usado apenas para pré-renderizar durante o build.
+          local-dir: ./.output/public/
+          # A conta de FTP do deploy deve ser criada no cPanel já apontando
+          # para a raiz do site (public_html do domínio), então o login cai lá
+          # dentro e "./" é a raiz.
+          #
+          # Se um dia o deploy passar a usar o usuário principal do cPanel,
+          # que entra em /home/<conta>/, troque para:
+          #   server-dir: ./public_html/
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.DS_Store
+            **/node_modules/**
+          # false = não apaga o que já existe no servidor fora do que subimos.
+          # Precisa continuar false: o endpoint PHP do formulário vive em
+          # /api/ no servidor e não faz parte deste build.
+          dangerous-clean-slate: false
+          log-level: standard
+          # O padrão (30s) é curto para conexão FTP de hospedagem compartilhada
+          # com arquivos maiores (as fotos das culturas passam de 100 KB).
+          timeout: 120000
+
+      - name: ✅ Concluído
+        run: |
+          echo "🎉 Deploy concluído!"
+          echo "🌐 https://stericlean.com.br"
