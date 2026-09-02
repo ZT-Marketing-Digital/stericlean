@@ -1,15 +1,28 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { toast } from "sonner";
 
-/** Endpoint PHP hospedado no cPanel — ver public/api/contato.php. */
-const ENDPOINT = "/api/contato.php";
+/** Endpoint PHP hospedado no cPanel — ver public/api/enviar.php. */
+const ENDPOINT = "/api/enviar.php";
 
 type Estado = "parado" | "enviando" | "enviado";
+
+/** Lê as UTMs da URL para o e-mail dizer de qual campanha veio o contato. */
+function origemDaCampanha(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  const params = new URLSearchParams(window.location.search);
+  const chaves = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  return Object.fromEntries(
+    chaves.map((k) => [k, params.get(k) ?? ""]).filter(([, v]) => v !== ""),
+  );
+}
 
 export function Contact() {
   const { t } = useLanguage();
   const [estado, setEstado] = useState<Estado>("parado");
+  // Momento em que a seção foi montada. O servidor recusa envio rápido
+  // demais, que é assinatura de robô — pessoa nenhuma preenche em 3s.
+  const abertoEm = useRef(Date.now());
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -23,7 +36,12 @@ export function Contact() {
       const res = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dados),
+        body: JSON.stringify({
+          ...dados,
+          form_opened_at: abertoEm.current,
+          page_url: typeof window !== "undefined" ? window.location.href : "",
+          attribution: origemDaCampanha(),
+        }),
       });
       // O endpoint responde JSON sempre; um HTML aqui significa erro do
       // servidor, e nesse caso o catch abaixo assume.

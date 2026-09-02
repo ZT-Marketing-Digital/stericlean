@@ -75,8 +75,12 @@ Options -Indexes
   Require all denied
 </FilesMatch>
 
-# O endpoint do formulário grava contatos.log quando o envio de e-mail falha.
-# Esse arquivo tem dado pessoal e não pode ser servido pela web.
+# Arquivos do endpoint do formulário que não podem ser servidos pela web:
+# config.php tem a senha do SMTP e .rate-limit.json guarda IPs.
+<FilesMatch "^(config\.php|\.rate-limit\.json)$">
+  Require all denied
+</FilesMatch>
+
 <FilesMatch "\.log$">
   Require all denied
 </FilesMatch>
