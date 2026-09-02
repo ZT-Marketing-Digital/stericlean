@@ -2,19 +2,41 @@ import { useState, type FormEvent } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { toast } from "sonner";
 
+/** Endpoint PHP hospedado no cPanel — ver public/api/contato.php. */
+const ENDPOINT = "/api/contato.php";
+
+type Estado = "parado" | "enviando" | "enviado";
+
 export function Contact() {
   const { t } = useLanguage();
-  const [sent, setSent] = useState(false);
+  const [estado, setEstado] = useState<Estado>("parado");
 
-  // TODO(deploy): este formulário ainda não envia nada — os dados são
-  // descartados no submit. Antes de publicar, ligar a um endpoint
-  // (Lovable Cloud, Formspree, Resend, worker do Cloudflare) ou trocar
-  // por um link de e-mail/WhatsApp real.
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
-    toast.success(t.contact.success);
-    e.currentTarget.reset();
+    if (estado === "enviando") return;
+
+    const form = e.currentTarget;
+    const dados = Object.fromEntries(new FormData(form));
+    setEstado("enviando");
+
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados),
+      });
+      // O endpoint responde JSON sempre; um HTML aqui significa erro do
+      // servidor, e nesse caso o catch abaixo assume.
+      const corpo = (await res.json()) as { ok?: boolean };
+      if (!res.ok || !corpo.ok) throw new Error("envio recusado");
+
+      setEstado("enviado");
+      toast.success(t.contact.success);
+      form.reset();
+    } catch {
+      setEstado("parado");
+      toast.error(t.contact.error);
+    }
   }
 
   const field =
@@ -73,14 +95,28 @@ export function Contact() {
             <textarea required name="message" rows={5} className={field} />
           </label>
 
+          {/* Isca para robô: invisível e fora da navegação, então só um
+              preenchedor automático mexe nele. O servidor descarta o envio. */}
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="hidden"
+          />
+
           <button
             type="submit"
-            className="mt-6 w-full rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+            disabled={estado === "enviando"}
+            className="mt-6 w-full rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {t.contact.submit}
+            {estado === "enviando" ? t.contact.sending : t.contact.submit}
           </button>
 
-          {sent && <p className="mt-4 text-center text-sm text-primary">{t.contact.success}</p>}
+          <p aria-live="polite" className="mt-4 text-center text-sm text-primary">
+            {estado === "enviado" ? t.contact.success : ""}
+          </p>
         </form>
       </div>
     </section>

@@ -74,3 +74,9 @@ Options -Indexes
 <FilesMatch "^(\.ftp-deploy-sync-state\.json|\.env.*|\.git.*)$">
   Require all denied
 </FilesMatch>
+
+# O endpoint do formulário grava contatos.log quando o envio de e-mail falha.
+# Esse arquivo tem dado pessoal e não pode ser servido pela web.
+<FilesMatch "\.log$">
+  Require all denied
+</FilesMatch>

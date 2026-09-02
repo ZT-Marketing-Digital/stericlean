@@ -99,7 +99,9 @@ export type Dict = {
     crop: string;
     message: string;
     submit: string;
+    sending: string;
     success: string;
+    error: string;
     units: { label: string; value: string }[];
   };
   footer: {
@@ -353,7 +355,10 @@ const pt: Dict = {
     crop: "Cultura / segmento",
     message: "Mensagem",
     submit: "Enviar mensagem",
-    success: "Mensagem registrada. Entraremos em contato em breve.",
+    sending: "Enviando...",
+    success: "Mensagem enviada. Entraremos em contato em breve.",
+    error:
+      "Não foi possível enviar agora. Tente novamente em instantes ou escreva para contato@stericleanbrasil.com.br.",
     units: [{ label: "Fábrica", value: "Biopark — Toledo / PR" }],
   },
   footer: {
@@ -609,7 +614,10 @@ const es: Dict = {
     crop: "Cultivo / segmento",
     message: "Mensaje",
     submit: "Enviar mensaje",
-    success: "Mensaje registrado. Nos pondremos en contacto pronto.",
+    sending: "Enviando...",
+    success: "Mensaje enviado. Nos pondremos en contacto pronto.",
+    error:
+      "No fue posible enviar ahora. Inténtelo de nuevo en unos instantes o escriba a contato@stericleanbrasil.com.br.",
     units: [{ label: "Planta", value: "Biopark — Toledo / PR" }],
   },
   footer: {
@@ -865,7 +873,10 @@ const en: Dict = {
     crop: "Crop / segment",
     message: "Message",
     submit: "Send message",
-    success: "Message received. We'll be in touch shortly.",
+    sending: "Sending...",
+    success: "Message sent. We'll be in touch shortly.",
+    error:
+      "We couldn't send it right now. Please try again shortly or write to contato@stericleanbrasil.com.br.",
     units: [{ label: "Plant", value: "Biopark — Toledo / PR" }],
   },
   footer: {

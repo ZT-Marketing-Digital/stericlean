@@ -56,6 +56,14 @@ jobs:
           test -f "$OUT/index.html" || { echo "::error::index.html não foi gerado"; exit 1; }
           test -f "$OUT/.htaccess" || { echo "::error::.htaccess não foi copiado — o site vai dar 404 fora da raiz"; exit 1; }
           test -f "$OUT/og-image.jpg" || { echo "::error::og-image.jpg sumiu — link compartilhado fica sem preview"; exit 1; }
+          test -f "$OUT/api/contato.php" || { echo "::error::api/contato.php ausente — o formulário para de enviar"; exit 1; }
+
+          # Sintaxe do PHP: o servidor não avisa, só devolve 500 no primeiro envio.
+          if command -v php >/dev/null 2>&1; then
+            php -l "$OUT/api/contato.php" || { echo "::error::erro de sintaxe em api/contato.php"; exit 1; }
+          else
+            echo "::warning::php indisponível no runner — checagem de sintaxe pulada"
+          fi
 
           # O HTML precisa chegar renderizado, não como casca vazia.
           grep -q "Culturas e contextos de uso" "$OUT/index.html" \
